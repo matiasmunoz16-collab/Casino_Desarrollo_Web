@@ -1,0 +1,165 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+    font-family: sans-serif;
+    background-color: rgb(207, 205, 203);
+}
+
+
+header{
+    
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    background-color: rgb(33, 84, 151);
+    text-decoration: none;
+    color: rgb(242, 242, 242);
+    font-weight: bold;
+    font-size: 30px;
+    gap: 50px;
+}
+
+#Delfin{ /* # para id*/
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 7px;
+    padding: 30px;
+
+}
+#Palabra1{
+
+}
+
+#Palabra2{
+    color: aqua;
+}
+#logo{
+    width: 100px;
+    height: 100px; 
+
+}
+
+nav.Menu{
+    display:flex;
+    flex-direction: row;
+    gap: 40px;
+    font-size: 30px;
+
+} 
+
+
+.barra{
+    text-decoration: none ;
+    color: white;
+}
+.barra:hover
+{
+    cursor: pointer;
+}
+
+button[type="login"]{
+    width: 300px;
+    height: 70px;
+    border-radius: 5px;
+    background-color:  rgb(33, 84, 151);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 24px;
+    margin-left: 20px;
+}
+
+button[type ="login"]:hover{
+    cursor: pointer;
+}
+
+
+.Resumen{
+    background-color: rgba(11, 21, 66, 0.914);
+    width: auto ;
+    height: 100px;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin: 30px;
+    padding: 25px;
+}
+
+.Bien{
+    font-size: 30px;
+    color: white;
+}
+
+.money{
+    color: green;
+    font-size: 20px;
+}
+
+.Total_Credito{
+    font-size: 20px;
+}
+.Mayor_Ganancia{
+     font-size: 20px;
+}
+
+.Obtener_Creditos{
+    background-color: green;
+    width: 300px;
+    height: 60px;
+    margin: 20px;
+    margin-left: 5cm;
+    border-radius: 8px;
+    
+}
+.Obtener_Creditos:hover{
+    cursor: pointer;
+}
+
+
+.Cuadrados{
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+#Cuadrado1{
+    width: 650px;
+    height: 500px;
+    background-color: white;
+    border-radius: 9px;
+    margin: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.Juego{
+    font-size: 50px;
+}
+
+#Cuadrado2{
+    width: 650px;
+    height: 500px;
+    background-color: white;
+    border-radius: 9px;
+    margin: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#Cuadrado3{
+    width: 450px;
+    height: 500px;
+    background-color: white;
+    border-radius: 9px;
+    margin: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
