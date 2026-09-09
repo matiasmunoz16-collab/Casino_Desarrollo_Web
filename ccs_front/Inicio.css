@@ -138,6 +138,10 @@ button[type ="login"]:hover{
     flex-direction: column;
 }
 
+#Cuadrado1:hover{
+    cursor: pointer;
+}
+
 .Juego{
     font-size: 50px;
 }
@@ -156,10 +160,26 @@ button[type ="login"]:hover{
 #Cuadrado3{
     width: 450px;
     height: 500px;
-    background-color: white;
-    border-radius: 9px;
+    background-color: rgba(97, 252, 86, 0.844);
+    border-radius: 15opx;
     margin: 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
+}
+
+#Ruleta{
+    width: 650px;
+    height: 300px;
+
+}
+#BalckJack{
+    width: 650px;
+    height: 300px;
+
+}
+
+.juegos:hover{
+    cursor: pointer;
+
 }
