@@ -23,6 +23,20 @@ body {
     width: 100%;
     max-width: 400px;
     border: 1px solid #d4af37;
+
+    #cuenta {
+    background: rgba(15, 23, 42, 0.85);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #d4af37;
+
+    position: absolute;
+    top: 55%;  
+    left: 15%; 
+}
 }
 
 #cuenta h1 {
