@@ -1,0 +1,63 @@
+body {
+
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+#cuenta {
+    background: rgba(15, 23, 42, 0.85);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #d4af37;
+}
+
+#cuenta h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d4af37;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #cfd8dc;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #455a64;
+    border-radius: 6px;
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 14px;
+    box-sizing: border-box; 
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+.error {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+}
