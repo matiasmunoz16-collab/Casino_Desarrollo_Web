@@ -1,10 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    /* Color de fondo por si la imagen se demora en cargar */
     background-color: #0f2027; 
-    /* Ruta para buscar la imagen (salimos de ccs_front y entramos a imagenes) */
     background-image: url('../imagenes/Fondo_Login.jpg'); 
-    /* Hacemos que la imagen cubra toda la pantalla sin repetirse */
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -33,8 +30,8 @@ body {
     max-width: 400px;
     border: 1px solid #d4af37;
     position: absolute;
-    top: 55%;  
-    left: 15%; 
+    top: 60%;  
+    left: 12%; 
 }
 }
 
