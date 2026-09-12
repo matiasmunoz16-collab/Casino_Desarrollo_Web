@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    /* Color de fondo por si la imagen se demora en cargar */
+    background-color: #0f2027; 
+    /* Ruta para buscar la imagen (salimos de ccs_front y entramos a imagenes) */
+    background-image: url('../imagenes/Fondo_Login.jpg'); 
+    /* Hacemos que la imagen cubra toda la pantalla sin repetirse */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: #ffffff;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cuenta {
+    background: rgba(15, 23, 42, 0.85);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #d4af37;
+
+    #cuenta {
+    background: rgba(15, 23, 42, 0.85);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #d4af37;
+    position: absolute;
+    top: 55%;  
+    left: 15%; 
+}
+}
+
+#cuenta h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d4af37;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #cfd8dc;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #455a64;
+    border-radius: 6px;
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 14px;
+    box-sizing: border-box; 
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+}
+
+.error {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.btn-ingresar {
+    width: 100%;
+    padding: 12px;
+    background-color: #d4af37;
+    color: #0f2027;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.btn-ingresar:hover {
+    background-color: #f1c40f;
+}
