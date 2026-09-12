@@ -1,15 +1,20 @@
 body {
-
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    /* Color de fondo por si la imagen se demora en cargar */
+    background-color: #0f2027; 
+    /* Ruta para buscar la imagen (salimos de ccs_front y entramos a imagenes) */
+    background-image: url('../imagenes/Fondo_Login.jpg'); 
+    /* Hacemos que la imagen cubra toda la pantalla sin repetirse */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     color: #ffffff;
     height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-
-
+}
 #cuenta {
     background: rgba(15, 23, 42, 0.85);
     padding: 30px;
@@ -18,6 +23,19 @@ body {
     width: 100%;
     max-width: 400px;
     border: 1px solid #d4af37;
+
+    #cuenta {
+    background: rgba(15, 23, 42, 0.85);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #d4af37;
+    position: absolute;
+    top: 55%;  
+    left: 15%; 
+}
 }
 
 #cuenta h1 {
@@ -60,4 +78,17 @@ body {
     margin-top: 4px;
 }
 
+.btn-ingresar {
+    width: 100%;
+    padding: 12px;
+    background-color: #d4af37;
+    color: #0f2027;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.btn-ingresar:hover {
+    background-color: #f1c40f;
 }
