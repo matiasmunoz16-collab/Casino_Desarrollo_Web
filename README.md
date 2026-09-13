@@ -6,7 +6,7 @@ Casino Delfines es una plataforma web interactiva de entretenimiento diseñada e
 ## Roles
 El sistema contempla dos perfiles diferenciados:
 * Jugador: Usuario estándar que puede registrarse, reclamar su bono inicial,  participar en juegos (Ruleta y Blackjack) y visualizar sus estadísticas y ranking.
-* Administrador: Rol encargado de la supervisión y gestión general de la     plataforma y los usuarios.
+* Administrador: Rol encargado de la supervisión y gestión general de la plataforma y los usuarios.
 
 ## Estado actual del proyecto (Entrega 1)
 Esta entrega corresponde a las vistas de la interfaz de usuario con validación básica en el lado del cliente (DOM), sin persistencia en base de datos ni lógica de backend todavía (las funcionalidades completas se implementarán en entregas futuras).
@@ -31,3 +31,4 @@ Esta entrega corresponde a las vistas de la interfaz de usuario con validación 
 * /Creditos.html — Sección para reclamar el bono de créditos iniciales.
 * /historial.html — Vista de historial de apuestas y balance del usuario.
 * /Ranking.html — Tabla de clasificación con el Top de jugadores.
+* /admin.html — Panel de control del administrador para gestionar juegos, auditar usuarios y revisar las estadísticas generales del casino.
