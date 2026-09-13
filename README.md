@@ -22,7 +22,7 @@ Esta entrega corresponde a las vistas de la interfaz de usuario con validación 
 
 ## Infraestructura y Despliegue
 * Servidor: AWS EC2
-* IP Pública: 
+* IP Pública: 34.234.232.163
 * Servidor Web: Nginx sirviendo las vistas estáticas en la raíz .
 
 ## Vistas / Rutas Implementadas
