@@ -20,7 +20,7 @@ header{
     gap: 50px;
 }
 
-#Delfin{ /* # para id*/
+#Delfin{ 
 
     display: flex;
     flex-direction: row;
