@@ -108,3 +108,23 @@ main {
     border-collapse: collapse; /* Une los bordes de las celdas */
     text-align: left;
 }
+
+.TablaAdmin th { 
+    background-color: #0b3c5d; 
+    color: #ffffff; 
+    padding: 15px; 
+}
+
+.TablaAdmin td { 
+    padding: 15px; 
+    border-bottom: 1px solid #e2e8f0; /* Línea separadora entre filas */
+}
+
+.TablaAdmin tr:hover { background-color: #f8fafc; } /* Resalta la fila al pasar el mouse */
+
+/* =========================================
+   ETIQUETAS DE ESTADO Y BOTONES DE ACCIÓN
+   ========================================= */
+.dinero { color: #00897b; font-weight: bold; }
+.EstadoActivo { color: #00e676; font-weight: bold; } /* Verde para ganancias/activos */
+.EstadoBloqueado { color: #e53e3e; font-weight: bold; } /* Rojo para pérdidas/inactivos */
