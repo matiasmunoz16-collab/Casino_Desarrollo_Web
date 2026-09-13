@@ -39,7 +39,7 @@
                 <h2>Panel de Control - Administrador</h2>
                 <p>Gestión de plataforma y usuarios</p>
             </section>
-            
+
             <section class="ResumenMetricas">
                 <div class="TarjetaMetrica">
                     <h3>Usuarios Registrados</h3>
@@ -55,6 +55,35 @@
                 </div>
             </section>
 
+            <section class="SeccionTabla" style="margin-bottom: 30px;">
+                <h3>Gestión de Juegos Disponibles</h3>
+                <table class="TablaAdmin">
+                    <thead>
+                        <tr>
+                            <th>ID Juego</th>
+                            <th>Nombre del Juego</th>
+                            <th>Estado Actual</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#J01</td>
+                            <td>Ruleta Francesa</td>
+                            <td><span class="EstadoActivo">Activo</span></td>
+                            <!-- Botón para simular la desactivación de un juego -->
+                            <td><button class="BtnBloquear">Desactivar</button></td>
+                        </tr>
+                        <tr>
+                            <td>#J02</td>
+                            <td>Blackjack Clásico</td>
+                            <td><span class="EstadoBloqueado">Inactivo</span></td>
+                            <!-- Botón para simular la activación de un juego -->
+                            <td><button class="BtnDesbloquear">Activar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
 </body>
 </html>
