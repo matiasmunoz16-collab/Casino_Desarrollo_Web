@@ -131,6 +131,9 @@ main {
     text-align: center;
     transition: background-color 0.2s;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7177ced6cc5ac786b62ed5dc0020d94cf626a8d8
     text-decoration: none;
 }
 
@@ -146,10 +149,13 @@ main {
     color: #ffffff;
     margin: 0;
 }
+<<<<<<< HEAD
 =======
 }
 
 >>>>>>> 6a8527db813585714c506025f047ca0edb9f8eda
+=======
+>>>>>>> 7177ced6cc5ac786b62ed5dc0020d94cf626a8d8
 .Obtener_Creditos:hover {
     background-color: #004d40;
 }
