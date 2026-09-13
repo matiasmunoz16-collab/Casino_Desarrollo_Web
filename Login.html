@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/ccs_front/login.css"
-    <title>Document</title>
+    <link rel="stylesheet" href="./ccs_front/login.css">
+    <title>Casino Delfines</title>
 </head>
 <body>
-    <!-----> form id="cuenta" /form>
-        <h1>Crer Cuenta</h1>
+    <form id="cuenta"> 
+        <h1>Crear Cuenta</h1>
 
         <div class="campo">
             <label for="nombre">Nombre de usuario</label>
@@ -32,13 +32,16 @@
 
         <div class="campo">
             <label for="confirmar">confirmar contrasena</label>
-            <input type="password" id="password" name="password" m required autocomplete="new-password">
+            <input type="password" id="confirmar" name="confirmar" required autocomplete="new-password">
             <div class="error" id="errorConfirmar"></div>
 
         </div>
+
+        <button type="submit" class="btn-ingresar">Crear Cuenta</button>
+
+    </form>
       
-
-
-
+    <script src="js/interacciones.js" defer></script>
+    
 </body>
 </html>

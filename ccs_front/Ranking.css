@@ -1,0 +1,166 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #dce7f2;
+    color: #1a2b3c;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0b3c5d;
+    color: #ffffff;
+    padding: 30px 60px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#Delfin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+#Palabra1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#Palabra2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #00d2ff;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+nav.Menu {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-size: 24px;
+}
+
+.barra {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.barra:hover {
+    color: #00d2ff;
+    cursor: pointer;
+}
+
+button[type="login"], button[type="Login"] {
+    min-width: 180px;
+    height: 55px;
+    border: 2px solid #00d2ff;
+    border-radius: 8px;
+    background-color: #071e3d;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="login"]:hover, button[type="Login"]:hover {
+    background-color: #00d2ff;
+    color: #071e3d;
+}
+
+main {
+    flex: 1;
+    padding: 40px 20px;
+}
+
+.contenedor-ranking {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.EncabezadoRanking {
+    background-color: #071e3d;
+    color: #ffffff;
+    border-radius: 12px 12px 0 0;
+    padding: 25px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.EncabezadoRanking h2 {
+    font-size: 26px;
+    color: #00d2ff;
+    margin-bottom: 5px;
+}
+
+.EncabezadoRanking p {
+    font-size: 15px;
+    color: #dce7f2;
+}
+
+.SeccionTabla {
+    background-color: #ffffff;
+    border-radius: 0 0 12px 12px;
+    padding: 25px 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.TablaRanking {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 16px;
+}
+
+.TablaRanking th {
+    background-color: #0b3c5d;
+    color: #ffffff;
+    padding: 16px 20px;
+    font-size: 17px;
+}
+
+.TablaRanking td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.TablaRanking tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.TablaRanking tr:hover {
+    background-color: #e2e8f0;
+}
+
+.creditos {
+    color: #00897b;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #000000;
+    color: #a0aec0;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    margin-top: auto;
+}
