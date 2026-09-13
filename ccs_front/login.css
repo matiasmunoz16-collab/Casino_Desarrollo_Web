@@ -1,10 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    /* Color de fondo por si la imagen se demora en cargar */
     background-color: #0f2027; 
-    /* Ruta para buscar la imagen (salimos de ccs_front y entramos a imagenes) */
     background-image: url('../imagenes/Fondo_Login.jpg'); 
-    /* Hacemos que la imagen cubra toda la pantalla sin repetirse */
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -15,49 +12,41 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 #cuenta {
     background: rgba(15, 23, 42, 0.85);
-    padding: 30px;
+    padding: 20px 25px;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 400px;
-    border: 1px solid #d4af37;
-
-    #cuenta {
-    background: rgba(15, 23, 42, 0.85);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     border: 1px solid #d4af37;
     position: absolute;
-    top: 55%;  
-    left: 15%; 
-}
+    top: 48%;  
+    left: 18%; 
 }
 
 #cuenta h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #d4af37;
+    font-size: 24px;
 }
 
 .campo {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .campo label {
     display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
+    margin-bottom: 4px;
+    font-size: 13px;
     color: #cfd8dc;
 }
 
 .campo input {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #455a64;
     border-radius: 6px;
     background-color: #1e293b;
@@ -80,7 +69,7 @@ body {
 
 .btn-ingresar {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background-color: #d4af37;
     color: #0f2027;
     font-weight: bold;
