@@ -15,12 +15,12 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between; /* Separa logo, menú y botón a los extremos */
-    align-items: center; /* Centra verticalmente los elementos */
-    background-color: #0b3c5d; /* Azul oscuro corporativo del casino */
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #0b3c5d; 
     color: #ffffff;
     padding: 30px 60px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos del Logo y Título */
@@ -32,7 +32,7 @@ header {
 /* Menú central */
 nav.Menu { display: flex; flex-direction: row; gap: 40px; font-size: 24px; }
 .barra { text-decoration: none; color: #ffffff; font-weight: 600; transition: color 0.2s; }
-.barra:hover { color: #00d2ff; cursor: pointer; } /* Efecto hover celeste */
+.barra:hover { color: #00d2ff; cursor: pointer; }
 
 .BtnSalir {
     min-width: 150px;
@@ -85,15 +85,12 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    border-top: 4px solid #00d2ff; /* Línea decorativa superior */
+    border-top: 4px solid #00d2ff; 
 }
 
 .TarjetaMetrica h3 { color: #64748b; font-size: 16px; margin-bottom: 10px; }
 .ValorMetrica { color: #0b3c5d; font-size: 32px; font-weight: bold; }
 
-/* =========================================
-   TABLAS DE GESTIÓN (JUEGOS Y USUARIOS)
-   ========================================= */
 .SeccionTabla {
     background-color: #ffffff;
     border-radius: 12px;
@@ -105,7 +102,7 @@ main {
 
 .TablaAdmin {
     width: 100%;
-    border-collapse: collapse; /* Une los bordes de las celdas */
+    border-collapse: collapse; 
     text-align: left;
 }
 
@@ -117,14 +114,34 @@ main {
 
 .TablaAdmin td { 
     padding: 15px; 
-    border-bottom: 1px solid #e2e8f0; /* Línea separadora entre filas */
+    border-bottom: 1px solid #e2e8f0; 
 }
 
-.TablaAdmin tr:hover { background-color: #f8fafc; } /* Resalta la fila al pasar el mouse */
+.TablaAdmin tr:hover { background-color: #f8fafc; } 
 
-/* =========================================
-   ETIQUETAS DE ESTADO Y BOTONES DE ACCIÓN
-   ========================================= */
 .dinero { color: #00897b; font-weight: bold; }
-.EstadoActivo { color: #00e676; font-weight: bold; } /* Verde para ganancias/activos */
-.EstadoBloqueado { color: #e53e3e; font-weight: bold; } /* Rojo para pérdidas/inactivos */
+.EstadoActivo { color: #00e676; font-weight: bold; } 
+.EstadoBloqueado { color: #e53e3e; font-weight: bold; } 
+
+.BtnBloquear, .BtnDesbloquear {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+.BtnBloquear { background-color: #e53e3e; }
+.BtnBloquear:hover { background-color: #c53030; }
+
+.BtnDesbloquear { background-color: #00897b; }
+.BtnDesbloquear:hover { background-color: #004d40; }
+
+footer { 
+    background-color: #000000; 
+    color: #a0aec0; 
+    text-align: center; 
+    padding: 25px; 
+    font-size: 14px; 
+    margin-top: auto;
+}
