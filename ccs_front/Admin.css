@@ -96,6 +96,7 @@ main {
     border-radius: 12px;
     padding: 25px 30px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* permite desplazar las tablas en pantallas pequeñas */
 }
 
 .SeccionTabla h3 { color: #0b3c5d; margin-bottom: 20px; }
@@ -137,11 +138,57 @@ main {
 .BtnDesbloquear { background-color: #00897b; }
 .BtnDesbloquear:hover { background-color: #004d40; }
 
-footer { 
-    background-color: #000000; 
-    color: #a0aec0; 
-    text-align: center; 
-    padding: 25px; 
-    font-size: 14px; 
+footer {
+    background-color: #000000;
+    color: #a0aec0;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
     margin-top: auto;
+}
+
+@media (max-width: 900px) {
+
+   
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 20px 15px;
+    }
+    #logo { width: 70px; height: 70px; }
+    #Palabra1, #Palabra2 { font-size: 24px; }
+
+    nav.Menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 20px;
+        font-size: 18px;
+    }
+
+    header > div:last-child {
+        display: flex;
+        justify-content: center;
+    }
+    .BtnSalir { width: 200px; }
+}
+
+@media (max-width: 768px) {
+
+    main { padding: 30px 15px; }
+
+    
+    .ResumenMetricas {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .EncabezadoAdmin {
+        padding: 20px 15px;
+    }
+    .EncabezadoAdmin h2 { font-size: 21px; }
+
+    .SeccionTabla { padding: 18px 15px; }
+
+    .TablaAdmin { min-width: 480px; }
 }

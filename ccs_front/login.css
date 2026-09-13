@@ -81,3 +81,17 @@ body {
 .btn-ingresar:hover {
     background-color: #f1c40f;
 }
+
+
+@media (max-width: 900px) {
+
+   
+    #cuenta {
+        position: relative; 
+        top: auto;
+        left: auto;
+        margin: 20px auto;
+        max-width: 420px;
+        width: 92%;
+    }
+}
