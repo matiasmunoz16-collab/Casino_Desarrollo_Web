@@ -1,0 +1,232 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #dce7f2;
+    color: #1a2b3c;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0b3c5d;
+    color: #ffffff;
+    padding: 30px 60px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#Delfin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+#Palabra1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#Palabra2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #00d2ff;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+nav.Menu {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    font-size: 24px;
+}
+
+.barra {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.barra:hover {
+    color: #00d2ff;
+    cursor: pointer;
+}
+
+button[type="login"], button[type="Login"] {
+    min-width: 180px;
+    height: 55px;
+    border: 2px solid #00d2ff;
+    border-radius: 8px;
+    background-color: #071e3d;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="login"]:hover, button[type="Login"]:hover {
+    background-color: #00d2ff;
+    color: #071e3d;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.contenedor-creditos {
+    width: 100%;
+    max-width: 650px;
+}
+
+.CardCreditos {
+    background-color: #071e3d;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid #1d5087;
+}
+
+.CardCreditos h2 {
+    font-size: 28px;
+    color: #00d2ff;
+    margin-bottom: 12px;
+}
+
+.Subtitulo {
+    font-size: 16px;
+    color: #dce7f2;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.MontoBono {
+    background-color: #0b3c5d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px dashed #00d2ff;
+}
+
+.MontoBono .Etiqueta {
+    font-size: 14px;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.MontoBono .Valor {
+    font-size: 32px;
+    font-weight: bold;
+    color: #00e676;
+}
+
+.AvisoLogin {
+    background-color: rgba(229, 62, 62, 0.15);
+    border: 1px solid #e53e3e;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.AvisoLogin p {
+    color: #feb2b2;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.AccionesLogin {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.BtnLogin, .BtnRegistro {
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.BtnLogin {
+    background-color: #00d2ff;
+    color: #071e3d;
+}
+
+.BtnLogin:hover {
+    background-color: #00b8e6;
+}
+
+.BtnRegistro {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.BtnRegistro:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.FormularioCreditos {
+    margin-top: 20px;
+}
+
+.UserLogged {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.BtnReclamar {
+    background-color: #00897b;
+    color: #ffffff;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.BtnReclamar:hover {
+    background-color: #004d40;
+}
+
+footer {
+    background-color: #000000;
+    color: #a0aec0;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    margin-top: auto;
+}

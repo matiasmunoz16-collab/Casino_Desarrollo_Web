@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,107 +7,96 @@
     <link rel="stylesheet" href="/ccs_front/Inicio.css">
 </head>
 <body>
-    <header>
 
+    <header>
         <h1 id="Delfin">
-            <img src="/imagenes/delfincasino.jpg" alt="Logo" id="logo">
+            <img src="/imagenes/delfincasino.jpg" alt="Logo Casino Delfines" id="logo">
             <span class="Titulo">    
-                <span id = "Palabra1">Casino</span>
+                <span id="Palabra1">Casino</span>
                 <br>
-                <span id = "Palabra2">Delfines</span>
+                <span id="Palabra2">Delfines</span>
             </span>
         </h1>
 
-        <div id ="Barra_Juegos">
+        <div id="Barra_Juegos">
             <nav class="Menu">
-                <a href="" class="barra">Juegos</a>
-                <a href="" class="barra">Mi historial</a>
-                <a href="" class="barra">Rankin</a>
-            
+                <a href="#juegos" class="barra">Juegos</a>
+                <a href="historial.html" class="barra">Mi historial</a>
+                <a href="Ranking.html" class="barra">Ranking</a>
             </nav>
         </div>
 
         <div>
             <a href="Login.html">
-            <button href="Login.html" type="Login">Iniciar sesion</button>
-            <button href="Login.html" type="Login">Registrar cuenta</button>
+                <button href="Login.html" type="Login">Iniciar sesion</button>
+                <button href="Login.html" type="Login">Registrar cuenta</button>
             </a>
-
-
-            </div>
-        
+        </div>
     </header>
-
-
-
 
     <main>
 
-        <div class="Resumen">
+ 
+        <section class="Resumen">
             <div class="Bien">
-                <h2> Bienvenido De Vuelta</h2>
+                <h2>Bienvenido De Vuelta</h2>
             </div>
 
             <div class="Total_Credito">
                 <h3>Credito jugados</h3>
-                <span class="money"> $: </span>
-
+                <span class="money"> $: <span id="creditos-jugados">0</span></span>
             </div>
 
             <div class="Mayor_Ganancia">
                 <h3>Mayor Ganancia</h3>
-                <span class="money"> $:</span>
-
+                <span class="money"> $: <span id="mayor-ganancia">0</span></span>
             </div>
 
-            <div href="google.com" class="Obtener_Creditos">
-                <h3>Obtener Creditos Inicales</h3>
-
+            <div class="Obtener_Creditos">
+                <a href="Creditos.html" >
+                    <h3 id="creditos_" >Obtener Creditos Inicales</h3>
+                </a>
             </div>
+        </section>
 
-        </div>
-
-
-
-
-        <div class="Cuadrados">
+        <section class="Cuadrados" id="juegos">
 
             <div id="Cuadrado1">
-                <a href="">
-                    <img  src="/imagenes/images_007_d-RH.jpg" alt="Logo Ruleta" id="Ruleta">
+                <a href="ruleta.html">
+                    <img src="/imagenes/images_007_d-RH.jpg" alt="Logo Ruleta" id="Ruleta">
                     <h2 class="Juego"> Ruleta Clasica </h2>
                     <p class="Descripcion"> Tire la ruleta </p>    
                 </a>    
-
             </div>
 
             <div id="Cuadrado2">
-                <a href="">
-                    <img  src="/imagenes/blackjack-logo-with-green-ribbon-and-on-a-green-backgro_BQog.jpg" alt="Logo Ruleta" id="BalckJack">
-                    <h2 class="Juego"> BalckJack </h2>
-                    <p class="Descripcion"> Tire la ruleta </p>    
+                <a href="blackjack.html">
+                    <img src="/imagenes/blackjack-logo-with-green-ribbon-and-on-a-green-backgro_BQog.jpg" alt="Logo Blackjack" id="BalckJack">
+                    <h2 class="Juego"> Blackjack </h2>
+                    <p class="Descripcion"> Desafía a la casa </p>    
                 </a>
-
             </div>
 
+            <!-- Dejarlo asi para usar a futuro JS/Backend -->
             <div id="Cuadrado3">
-                <img  src="" alt="Logo Ruleta" id="Ruleta">
-                <h2 class="Juego"> Ranking </h2>
-                <p class="Descripcion"> Tire la ruleta </p>    
-            
+                <h2 class="Juego"> Ranking  </h2>
+                
+                <ol id="live-ranking-list">
+                    <!-- JavaScript insertará aquí el Top 3 o Top 5 -->
+                    <li>posiciones </li>
+                </ol>
 
+                <a href="Ranking.html" class="ver-todo">Ver tabla completa</a>
             </div>
 
-
-
-
-        </div>
+        </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 Casino Los Mirandas. Todos los derechos reservados. Solo para fines académicos y entretenimiento con créditos virtuales.</p>
+        <p>2026 Casino Los Mirandas. Todos los derechos reservados. Solo para fines académicos y entretenimiento con créditos virtuales.</p>
     </footer>
-    
+
+    <script src=""></script>
 </body>
 </html>
