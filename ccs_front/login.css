@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 #cuenta {
     background: rgba(15, 23, 42, 0.85);
     padding: 20px 25px;
@@ -29,7 +30,7 @@ body {
     text-align: center;
     margin-bottom: 15px;
     color: #d4af37;
-    font-size : 24px;
+    font-size: 24px;
 }
 
 .campo {

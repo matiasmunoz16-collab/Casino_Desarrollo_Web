@@ -130,6 +130,7 @@ main {
     cursor: pointer;
     text-align: center;
     transition: background-color 0.2s;
+<<<<<<< HEAD
     text-decoration: none;
 }
 
@@ -145,6 +146,10 @@ main {
     color: #ffffff;
     margin: 0;
 }
+=======
+}
+
+>>>>>>> 6a8527db813585714c506025f047ca0edb9f8eda
 .Obtener_Creditos:hover {
     background-color: #004d40;
 }
