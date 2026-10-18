@@ -163,3 +163,56 @@ footer {
     font-size: 14px;
     margin-top: auto;
 }
+
+
+@media (max-width: 900px) {
+
+  
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 20px 15px;
+    }
+    #logo { width: 70px; height: 70px; }
+    #Palabra1, #Palabra2 { font-size: 24px; }
+
+    nav.Menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 20px;
+        font-size: 18px;
+    }
+
+    header > div:last-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    button[type="login"], button[type="Login"] {
+        min-width: 200px;
+        height: 46px;
+        font-size: 16px;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    
+    .Resumen {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+        margin: 20px 15px;
+        padding: 20px;
+    }
+    .Bien { font-size: 20px; }
+
+    
+    .SeccionTabla {
+        margin: 20px 15px;
+        padding: 15px;
+    }
+}
