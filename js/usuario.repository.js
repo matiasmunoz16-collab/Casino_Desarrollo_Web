@@ -8,3 +8,11 @@ export class UsuarioRepository {
     async cerrarSesion() { throw new Error('No implementado'); }
 }
 
+export class LocalStorageUsuarioRepository extends UsuarioRepository {
+    constructor(){
+        super ();
+        this.claveUsuarios = 'casino_delfines_usuarios';
+        this.claveSesion = 'casino_delfines_sesion';
+    }
+}
+
