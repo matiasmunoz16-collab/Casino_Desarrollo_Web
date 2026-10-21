@@ -25,4 +25,20 @@ class JuegoService {
         await this.repositorio.crear(juego);
         return juego;
     }
+
+    async cambiarEstado(id) {
+        const juegos = await this.repositorio.listar();
+        const juego = juegos.find(j => j.id === id);
+        if (!juego) {
+            throw new Error('El juego no existe.');
+        }
+
+        juego.estado = juego.estado === 'activo' ? 'inactivo' : 'activo';
+        await this.repositorio.editar(juego);
+        return juego;
+    }
+
+    async eliminar(id) {
+        await this.repositorio.eliminar(id);
+    }
 }
