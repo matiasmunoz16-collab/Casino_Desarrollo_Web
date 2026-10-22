@@ -72,4 +72,53 @@ export class UsuarioService {
         await this.repo.guardarSesion(encontrado);
         return encontrado;
     }
+
+    async reclamarBono() {
+        const sesion = await this.repo.obtenerSesion();
+        if (!sesion) {
+            throw new Error('Debes iniciar sesion para reclamar tus creditos.');
+        }
+        if (sesion.bonoReclamado) {
+            throw new Error('Ya reclamaste tu bono de bienvendia.');
+        }
+
+        sesion.creditos += 1000;
+        sesion.bonoReclamado = true;
+
+        await this.repo.editar(sesion);
+        await this.repo.guardarSesion(sesion);
+        return sesion;
+    }
+
+    async editarPerfil(id, nuevosDatos) {
+        const nombre = nuevosDatos.nombre ? nuevosDatos.nombre.trim() : '';
+        if (nombre.length < 3) {
+            throw new Error('El nombre debe tener al menos 3 caracteres.');
+        }
+
+        const lista = await this.repo.listar();
+        const usuario = lista.find(u => u.id === id);
+        if (!usuario) {
+            throw new Error('Usuario no encontrado.');
+        }
+
+        usuario.nombre = nombre;
+        if(nuevosDatos.email && nuevosDatos.email.includes('@')) {
+            usuario.email = nuevosDatos.email.trim();
+        }
+
+        await this.repo.editar(usuario);
+        await this.repo.guardarSesion(usuario);
+        return usuario;
+    }
+
+    async eliminarCuenta(id) {
+        await this.repo.eliminar(id);
+        await this.repo.cerrarSesion();
+        return true;
+    }
+
+    async cerrarSesion() {
+        return await this.repo.cerrarSesion();
+    }
 }
