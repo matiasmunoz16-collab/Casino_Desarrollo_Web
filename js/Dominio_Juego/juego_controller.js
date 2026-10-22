@@ -28,6 +28,39 @@ function crearAdminJuegos(juegoService) {
 
         listaVacia() {
             return !this.cargando && !this.error && this.juegos.length === 0;
+        },
+
+        async crear() {
+            this.mostrarError('');
+            try {
+                const juego = await juegoService.crear(this.nuevoNombre);
+                this.juegos.push(juego);
+                this.nuevoNombre = '';
+            } catch (e) {
+                this.mostrarError(e.message);
+            }
+        },
+
+        async alternarEstado(id) {
+            this.mostrarError('');
+            try {
+                const actualizado = await juegoService.cambiarEstado(id);
+                this.juegos = this.juegos.map(j => (j.id === id ? actualizado : j));
+            } catch (e) {
+                this.mostrarError(e.message);
+            }
+        },
+
+        async eliminar(id) {
+            this.mostrarError('');
+            try {
+                await juegoService.eliminar(id);
+                this.juegos = this.juegos.filter(j => j.id !== id);
+            } catch (e) {
+                this.mostrarError(e.message);
+            }
         }
+        
+    
     };
 }
