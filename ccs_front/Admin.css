@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-/* ===== BASE: móvil (375 px en adelante) ===== */
+/* 375 px en adelante)*/
 body {
     font-family: system-ui, -apple-system, sans-serif;
     background-color: #dce7f2;
@@ -44,7 +44,7 @@ nav.Menu {
     font-weight: 600;
     transition: color 0.2s;
     display: inline-block;
-    min-height: 44px;             /* [NUEVO] área de toque mínima */
+    min-height: 44px;             /*  área de toque mínima */
     line-height: 44px;
 }
 .barra:hover { color: #00d2ff; cursor: pointer; }
@@ -135,7 +135,7 @@ main {
 .EstadoBloqueado { color: #e53e3e; font-weight: bold; }
 
 .BtnBloquear, .BtnDesbloquear, .BtnEliminar, .BtnAgregar {
-    min-height: 44px;             /* [NUEVO] áreas de toque mínimas */
+    min-height: 44px;             /* áreas de toque mínimas */
     padding: 10px 14px;
     border: none;
     border-radius: 5px;
@@ -211,7 +211,7 @@ footer {
     margin-top: auto;
 }
 
-/* ===== TABLET (769 px en adelante) ===== */
+/* (769 px en adelante)*/
 @media (min-width: 769px) {
     main { padding: 40px 20px; }
 
@@ -228,7 +228,7 @@ footer {
     .FormularioJuego input { flex: 1; }
 }
 
-/* ===== DESKTOP (901 px en adelante) ===== */
+/*  (901 px en adelante) */
 @media (min-width: 901px) {
     header {
         flex-direction: row;
