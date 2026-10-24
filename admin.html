@@ -55,9 +55,31 @@
                 </div>
             </section>
 
-            <section class="SeccionTabla" style="margin-bottom: 30px;">
+            <section class="SeccionTabla" id="juegos" style="margin-bottom: 30px;" x-data="adminJuegos" x-init="cargar()">
                 <h3>Gestión de Juegos Disponibles</h3>
-                <table class="TablaAdmin">
+
+                <!--Formulario de creación -->
+                <form class="FormularioJuego" @submit.prevent="crear()">
+                    <input type="text" x-model="nuevoNombre" placeholder="Nombre del juego (ej: Ruleta Francesa)" maxlength="30" required>
+                    <button type="submit" class="BtnAgregar">Agregar juego</button>
+                </form>
+
+                <!-- Estado de error "para dar informacion a gfuturo" -->
+                <div class="MensajeError" x-show="error" role="alert">
+                    <span x-text="error"></span>
+                    <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
+                </div>
+
+                <!-- carga -->
+                <p class="EstadoCargando" x-show="cargando">Cargando juegos...</p>
+
+                <!-- lista vacía -->
+                <div class="EstadoVacio" x-show="listaVacia()">
+                    <p>Aún no hay juegos creados. Agrega el primero con el formulario.</p>
+                </div>
+
+                <!--  Estado normal -->
+                <table class="TablaAdmin" x-show="!cargando && juegos.length > 0">
                     <thead>
                         <tr>
                             <th>ID Juego</th>
@@ -67,20 +89,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#J01</td>
-                            <td>Ruleta Francesa</td>
-                            <td><span class="EstadoActivo">Activo</span></td>
-                            <!-- Botón para simular la desactivación de un juego -->
-                            <td><button class="BtnBloquear">Desactivar</button></td>
-                        </tr>
-                        <tr>
-                            <td>#J02</td>
-                            <td>Blackjack Clásico</td>
-                            <td><span class="EstadoBloqueado">Inactivo</span></td>
-                            <!-- Botón para simular la activación de un juego -->
-                            <td><button class="BtnDesbloquear">Activar</button></td>
-                        </tr>
+                        <template x-for="j in juegos" :key="j.id">
+                            <tr>
+                                <td x-text="j.id"></td>
+                                <td x-text="j.nombre"></td>
+                                <td>
+                                    <span :class="j.estado === 'activo' ? 'EstadoActivo' : 'EstadoBloqueado'"
+                                        x-text="j.estado === 'activo' ? 'Activo' : 'Inactivo'"></span>
+                                </td>
+                                <td class="Acciones">
+                                    <button type="button"
+                                            :class="j.estado === 'activo' ? 'BtnBloquear' : 'BtnDesbloquear'"
+                                            @click="alternarEstado(j.id)"
+                                            x-text="j.estado === 'activo' ? 'Desactivar' : 'Activar'"></button>
+                                    <button type="button" class="BtnEliminar" @click="eliminar(j.id)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
             </section>
@@ -119,5 +144,11 @@
         <p>2026 Casino Delfines. Plataforma académica sin uso de dinero real.</p>
     </footer>
     
+    <script src="js/Dominio_Juego/juego_repositorio.js" defer></script>
+    <script src="js/Dominio_Juego/storage_repositorio.js" defer></script>
+    <script src="js/Dominio_Juego/juego_service.js" defer></script>
+    <script src="js/Dominio_Juego/juego_controller.js" defer></script>
+    <script src="js/Dominio_Juego/compositor_root.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
 </body>
 </html>
