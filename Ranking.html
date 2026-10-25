@@ -6,7 +6,7 @@
     <title>Ranking Top 50 - Casino Delfines</title>
     <link rel="stylesheet" href="ccs_front/Ranking.css">
 </head>
-<body>
+<body x-data="usuarioController" x-init="cargarRanking()">
 
     <header>
         <h1 id="Delfin">
@@ -27,10 +27,21 @@
         </div>
 
         <div>
-            <a href="Login.html">
-                <button type="Login">Iniciar sesion</button>
-                <button type="Login">Registrar cuenta</button>
-            </a>
+            <div x-show="!sesionActiva" style="display: flex; gap: 10px; align-items: center;">
+                <a href="Login.html">
+                    <button type="button" style="background-color: transparent; border: 1px solid #00bfff; color: white; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer;">Iniciar sesion</button>
+                </a>
+                <a href="Login.html">
+                    <button type="button" style="background-color: transparent; border: 1px solid #00bfff; color: white; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer;">Registrar cuenta</button>
+                </a>
+            </div>
+            
+            <div x-show="sesionActiva" style="display: none;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="color: white; font-weight: bold;">Hola, <span x-text="sesionActiva?.nombre"></span></span>
+                    <button type="button" @click="salir()" style="background-color: transparent; border: 1px solid #ff4444; color: white; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer;">Cerrar sesión</button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -51,17 +62,15 @@
                         </tr>
                     </thead>
                     <tbody id="ranking-body">
-                        <!-- Filas inyectadas por JS -->
-
-                        <tr> <!--- Datos de prueba para ver como quedarian se quitaran a futuro-->
-                            <td>#1</td>
-                            <td>DelfinMaestro</td>
-                            <td class="creditos">$50,250</td>
-                        </tr>
-                        <tr>
-                            <td>#2</td>
-                            <td>CarlosPro99</td>
-                            <td class="creditos">$42,100</td>
+                        <template x-for="(usuario, index) in ranking" :key="usuario.id">
+                            <tr>
+                                <td x-text="'#' + (index + 1)"></td>
+                                <td x-text="usuario.nombre"></td>
+                                <td class="creditos" x-text="'$' + usuario.creditos"></td>
+                            </tr>
+                        </template>
+                        <tr x-show="ranking.length === 0">
+                            <td colspan="3" style="text-align: center;">No hay jugadores registrados todavía.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,6 +82,7 @@
         <p>2026 Casino Los Mirandas. Todos los derechos reservados. Solo para fines académicos y entretenimiento con créditos virtuales.</p>
     </footer>
 
-    <script src=""></script>
+    <script type="module" src="js/usuario.controller.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
