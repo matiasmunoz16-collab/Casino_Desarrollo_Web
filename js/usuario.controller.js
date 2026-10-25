@@ -39,7 +39,12 @@ document.addEventListener('alpine:init', () => {
             this.errorGeneral = '';
             try {
                 await usuarioService.iniciarSesion(this.datosLogin.identificador, this.datosLogin.password);
-                window.location.href = 'index.html';
+                
+                if (this.datosLogin.identificador.toLowerCase() === 'admin' || this.datosLogin.identificador === 'admin@casino.cl') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
             } catch (error) {
                 this.errorGeneral = error.message;
             }
