@@ -19,21 +19,15 @@
 <body>
     <div x-data="usuarioController">
         <div x-data="{ vistaLogin: true }">
-            
-            <!-- UN SOLO FORMULARIO para mantener tu diseño CSS intacto -->
-            <!-- Alpine decide si ejecuta iniciarSesion() o registrarse() -->
             <form id="cuenta" @submit.prevent="vistaLogin ? iniciarSesion() : registrarse()"> 
                 
-                <!-- El título cambia según la vista -->
                 <h1 x-text="vistaLogin ? 'Iniciar Sesión' : 'Crear Cuenta'"></h1>
 
                 <p class="error" style="color: red; text-align: center; font-weight: bold; margin-bottom:10px;" x-text="errorGeneral"></p>
 
-                <!-- ================= CAMPOS DE INICIO DE SESIÓN ================= -->
                 <div x-show="vistaLogin">
                     <div class="campo">
                         <label for="identificador">Usuario o Correo</label>
-                        <!-- Usamos :required para que el navegador no exija este campo si está oculto -->
                         <input type="text" id="identificador" name="identificador" x-model="datosLogin.identificador" :required="vistaLogin" autocomplete="username">
                     </div>
 
@@ -43,7 +37,6 @@
                     </div>
                 </div>
 
-                <!-- ================= CAMPOS DE REGISTRO ================= -->
                 <div x-show="!vistaLogin">
                     <div class="campo">
                         <label for="nombre">Nombre de usuario</label>
@@ -66,10 +59,8 @@
                     </div>
                 </div>
 
-                <!-- Botón que cambia su texto -->
                 <button type="submit" class="btn-ingresar" x-text="vistaLogin ? 'Ingresar' : 'Crear Cuenta'"></button>
 
-                <!-- Textos clickeables para alternar -->
                 <p class="cambiar-vista" x-show="vistaLogin" @click="vistaLogin = false; errorGeneral = ''">¿No tienes cuenta? Regístrate aquí</p>
                 <p class="cambiar-vista" x-show="!vistaLogin" @click="vistaLogin = true; errorGeneral = ''">¿Ya tienes cuenta? Inicia sesión</p>
 
