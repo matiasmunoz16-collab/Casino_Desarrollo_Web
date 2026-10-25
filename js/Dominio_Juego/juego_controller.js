@@ -1,10 +1,10 @@
-
+// Profesor es el CONTROLADOR de la lista (Alpine.data), esto Traduce interacciones en órdenes al servicio
+// y deja el resultado en el estad
 function crearAdminJuegos(juegoService) {
     return {
         juegos: [],
         cargando: false,
         error: '',
-        nuevoNombre: '',
 
         async cargar() {
             this.mostrarCargando(true);
@@ -30,15 +30,26 @@ function crearAdminJuegos(juegoService) {
             return !this.cargando && !this.error && this.juegos.length === 0;
         },
 
-        async crear() {
-            this.mostrarError('');
-            try {
-                const juego = await juegoService.crear(this.nuevoNombre);
-                this.juegos.push(juego);
-                this.nuevoNombre = '';
-            } catch (e) {
-                this.mostrarError(e.message);
-            }
+        hayJuegos() {
+            return !this.cargando && this.juegos.length > 0;
+        },
+
+        //  Eventos
+        nuevo() {
+            this.$dispatch('abrir-formulario', { juego: null });
+        },
+
+        editar(juego) {
+            this.$dispatch('abrir-formulario', { juego });
+        },
+
+        // agrega o reemplaza el juego en la lista
+        alGuardar(evento) {
+            const juego = evento.detail.juego;
+            const existe = this.juegos.some(j => j.id === juego.id);
+            this.juegos = existe
+                ? this.juegos.map(j => (j.id === juego.id ? juego : j))
+                : [...this.juegos, juego];
         },
 
         async alternarEstado(id) {
@@ -59,8 +70,43 @@ function crearAdminJuegos(juegoService) {
             } catch (e) {
                 this.mostrarError(e.message);
             }
+        },
+
+        // -Formato para la vista (así el HTML no lleva lógica) ---
+        tieneImagen(j) {
+            return Boolean(j.imagen);
+        },
+
+        textoDescripcion(j) {
+            return j.descripcion || 'Sin datos';
+        },
+
+        textoTipo(j) {
+            return j.tipo || 'Sin datos';
+        },
+
+        textoApuestas(j) {
+            if (!j.apuestaMin || !j.apuestaMax) {
+                return 'Sin datos';
+            }
+            return j.apuestaMin.toLocaleString('es-CL') + ' - ' +
+                j.apuestaMax.toLocaleString('es-CL') + ' créditos';
+        },
+
+        textoEstado(j) {
+            return j.estado === 'activo' ? 'Activo' : 'Inactivo';
+        },
+
+        claseEstado(j) {
+            return j.estado === 'activo' ? 'EstadoActivo' : 'EstadoBloqueado';
+        },
+
+        textoBotonEstado(j) {
+            return j.estado === 'activo' ? 'Desactivar' : 'Activar';
+        },
+
+        claseBotonEstado(j) {
+            return j.estado === 'activo' ? 'BtnBloquear' : 'BtnDesbloquear';
         }
-        
-    
     };
 }
