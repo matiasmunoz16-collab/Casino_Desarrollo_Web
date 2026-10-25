@@ -51,12 +51,12 @@ export class LocalStorageUsuarioRepository extends UsuarioRepository {
         return true;
     }
 
-    async obtenerSesion(usuario) {
+    async obtenerSesion() {
         const sesion = localStorage.getItem(this.claveSesion);
         return sesion ? JSON.parse(sesion) : null; 
     }
 
-    async guardarSesion() {
+    async guardarSesion(usuario) {
         localStorage.setItem(this.claveSesion, JSON.stringify(usuario));
         return usuario;
     }
