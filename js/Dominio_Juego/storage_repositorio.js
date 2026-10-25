@@ -23,6 +23,11 @@ class LocalStorageJuegoRepository extends JuegoRepository {
     }
 
     _guardar(juegos) {
-        localStorage.setItem(CLAVE_JUEGOS, JSON.stringify(juegos));
+        try {
+            localStorage.setItem(CLAVE_JUEGOS, JSON.stringify(juegos));
+        } catch (e) {
+            throw new Error('No hay espacio para guardar. Prueba con una imagen más liviana.');
+        }
     }
+    
 }
