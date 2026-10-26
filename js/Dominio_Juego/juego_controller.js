@@ -1,10 +1,10 @@
-// Profesor esto el CONTROLADOR de la lista (Alpine.data), esto Traduce interacciones en órdenes al servicio
-// y deja el resultado en el estad
+
 function crearAdminJuegos(juegoService) {
     return {
         juegos: [],
         cargando: false,
         error: '',
+        mostrandoLista: true,
 
         async cargar() {
             this.mostrarCargando(true);
@@ -34,22 +34,30 @@ function crearAdminJuegos(juegoService) {
             return !this.cargando && this.juegos.length > 0;
         },
 
-        //  Eventos
+        // Eventos hacia el formular
         nuevo() {
+            this.mostrandoLista = false;
             this.$dispatch('abrir-formulario', { juego: null });
         },
 
         editar(juego) {
-            this.$dispatch('abrir-formulario', { juego });
+            this.mostrandoLista = false;
+            this.$dispatch('abrir-formulario', { juego: juego });
         },
 
-        // agrega o reemplaza el juego en la lista
+        // Eventos desde el formulario 
+        alCerrarFormulario() {
+            this.mostrandoLista = true;
+        },
+
         alGuardar(evento) {
             const juego = evento.detail.juego;
             const existe = this.juegos.some(j => j.id === juego.id);
-            this.juegos = existe
-                ? this.juegos.map(j => (j.id === juego.id ? juego : j))
-                : [...this.juegos, juego];
+            if (existe) {
+                this.juegos = this.juegos.map(j => (j.id === juego.id ? juego : j));
+            } else {
+                this.juegos.push(juego);
+            }
         },
 
         async alternarEstado(id) {
@@ -72,7 +80,7 @@ function crearAdminJuegos(juegoService) {
             }
         },
 
-        // -Formato para la vista (así el HTML no lleva lógica) ---
+        //  Formato para la vista (así el HTML no lleva lógica
         tieneImagen(j) {
             return Boolean(j.imagen);
         },
@@ -89,8 +97,7 @@ function crearAdminJuegos(juegoService) {
             if (!j.apuestaMin || !j.apuestaMax) {
                 return 'Sin datos';
             }
-            return j.apuestaMin.toLocaleString('es-CL') + ' - ' +
-                j.apuestaMax.toLocaleString('es-CL') + ' créditos';
+            return j.apuestaMin + ' - ' + j.apuestaMax + ' créditos';
         },
 
         textoEstado(j) {

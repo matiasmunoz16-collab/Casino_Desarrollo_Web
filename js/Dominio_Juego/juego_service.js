@@ -1,8 +1,4 @@
 
-// profe esto recibe el repositorio por constructor (DIP). No lo construye ni nombra localStorage.
-const TIPOS_JUEGO = ['Ruleta', 'Blackjack', 'Otro'];
-const MAX_IMAGEN = 400000; // aprox. 290 KB)
-
 class JuegoService {
     constructor(repositorio) {
         this.repositorio = repositorio;
@@ -14,22 +10,39 @@ class JuegoService {
 
     async crear(datos) {
         const juegos = await this.repositorio.listar();
-        const limpio = this._validar(datos, juegos, null);
+        this._validar(datos, juegos, null);
 
-        const juego = { id: 'J' + Date.now(), ...limpio, estado: 'activo' };
+        const juego = {
+            id: 'J' + Date.now(),
+            nombre: datos.nombre.trim(),
+            tipo: datos.tipo,
+            descripcion: (datos.descripcion || '').trim(),
+            imagen: datos.imagen || '',
+            apuestaMin: Number(datos.apuestaMin),
+            apuestaMax: Number(datos.apuestaMax),
+            estado: 'activo'
+        };
+
         await this.repositorio.crear(juego);
         return juego;
     }
 
     async editar(id, datos) {
         const juegos = await this.repositorio.listar();
-        const actual = juegos.find(j => j.id === id);
-        if (!actual) {
+        const juego = juegos.find(j => j.id === id);
+        if (!juego) {
             throw new Error('El juego no existe.');
         }
 
-        const limpio = this._validar(datos, juegos, id);
-        const juego = { ...actual, ...limpio };
+        this._validar(datos, juegos, id);
+
+        juego.nombre = datos.nombre.trim();
+        juego.tipo = datos.tipo;
+        juego.descripcion = (datos.descripcion || '').trim();
+        juego.imagen = datos.imagen || '';
+        juego.apuestaMin = Number(datos.apuestaMin);
+        juego.apuestaMax = Number(datos.apuestaMax);
+
         await this.repositorio.editar(juego);
         return juego;
     }
@@ -50,7 +63,9 @@ class JuegoService {
         await this.repositorio.eliminar(id);
     }
 
-    // Reglas de validación. Devuelve los datos ya limpios o lanza un Error.
+    // Reglas de validación. Lanza un Error si algo no cumple.
+    // idActual es el id del juego que se edita (null si es nuevo),
+    // para no marcar como repetido el nombre del propio juego.
     _validar(datos, juegos, idActual) {
         const nombre = (datos.nombre || '').trim();
         if (nombre.length < 2) {
@@ -67,32 +82,30 @@ class JuegoService {
             throw new Error('Ya existe un juego con ese nombre.');
         }
 
-        if (!TIPOS_JUEGO.includes(datos.tipo)) {
+        if (datos.tipo !== 'Ruleta' && datos.tipo !== 'Blackjack' && datos.tipo !== 'Otro') {
             throw new Error('Selecciona un tipo de juego válido.');
         }
 
-        const descripcion = (datos.descripcion || '').trim();
-        if (descripcion.length > 200) {
+        if ((datos.descripcion || '').trim().length > 200) {
             throw new Error('La descripción no puede superar los 200 caracteres.');
         }
 
         const min = Number(datos.apuestaMin);
         const max = Number(datos.apuestaMax);
-        if (!Number.isInteger(min) || min < 1) {
-            throw new Error('La apuesta mínima debe ser un número entero mayor que 0.');
+        if (isNaN(min) || min <= 0) {
+            throw new Error('La apuesta mínima debe ser un número mayor que 0.');
         }
-        if (!Number.isInteger(max) || max <= min) {
-            throw new Error('La apuesta máxima debe ser un número entero mayor que la mínima.');
+        if (isNaN(max) || max <= min) {
+            throw new Error('La apuesta máxima debe ser un número mayor que la mínima.');
         }
 
+        // La imagen llega como texto "data:image/..." (viene del archivo subido).
         const imagen = datos.imagen || '';
-        if (imagen && !imagen.startsWith('data:image/')) {
+        if (imagen !== '' && imagen.indexOf('data:image/') !== 0) {
             throw new Error('El archivo seleccionado no es una imagen.');
         }
-        if (imagen.length > MAX_IMAGEN) {
+        if (imagen.length > 400000) { // aprox. 290 KB
             throw new Error('La imagen es muy pesada. Usa una de menos de 290 KB.');
         }
-
-        return { nombre, tipo: datos.tipo, descripcion, imagen, apuestaMin: min, apuestaMax: max };
     }
 }

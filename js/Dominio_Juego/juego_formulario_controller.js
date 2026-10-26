@@ -12,7 +12,7 @@ function crearFormularioJuego(juegoService) {
         guardando: false,
         error: '',
 
-        // Se ejecuta con el evento abrir-formulario
+        // Se ejecuta con el evento 'abrir-formulario' enviado por la lista.
         abrir(evento) {
             const juego = evento.detail.juego;
             this.limpiar();
@@ -44,7 +44,25 @@ function crearFormularioJuego(juegoService) {
             this.imagen = '';
             this.apuestaMin = '';
             this.apuestaMax = '';
+            this.$refs.archivo.value = '';
             this.mostrarError('');
+        },
+
+        // Lee el archivo elegido y lo deja como texto (data URL) en el estado.
+        elegirImagen(evento) {
+            const archivo = evento.target.files[0];
+            if (!archivo) {
+                return;
+            }
+
+            const lector = new FileReader();
+            lector.onload = () => {
+                this.imagen = lector.result;
+            };
+            lector.onerror = () => {
+                this.mostrarError('No se pudo leer la imagen.');
+            };
+            lector.readAsDataURL(archivo);
         },
 
         async guardar() {
