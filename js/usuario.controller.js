@@ -1,9 +1,3 @@
-import { LocalStorageUsuarioRepository } from "./usuario.repository.js";
-import { UsuarioService } from "./usuario.service.js";
-
-const repositorioDeUsuarios = new LocalStorageUsuarioRepository();
-const usuarioService = new UsuarioService(repositorioDeUsuarios);
-
 document.addEventListener('alpine:init', () => {
     Alpine.data('usuarioController', () => ({
         sesionActiva: null,
@@ -18,17 +12,17 @@ document.addEventListener('alpine:init', () => {
         },
         
         async cargarSesion() {
-            this.sesionActiva = await usuarioService.obtenerSesionActual();
+            this.sesionActiva = await window.usuarioService.obtenerSesionActual();
         },
 
         async cargarRanking() {
-            this.ranking = await usuarioService.obtenerRanking();
+            this.ranking = await window.usuarioService.obtenerRanking();
         },
 
         async registrarse() {
             this.errorGeneral = '';
             try {
-                await usuarioService.registrar(this.datosRegistro);
+                await window.usuarioService.registrar(this.datosRegistro);
                 window.location.href = 'index.html';
             } catch (error) {
                 this.errorGeneral = error.message;
@@ -38,7 +32,7 @@ document.addEventListener('alpine:init', () => {
         async iniciarSesion() {
             this.errorGeneral = '';
             try {
-                await usuarioService.iniciarSesion(this.datosLogin.identificador, this.datosLogin.password);
+                await window.usuarioService.iniciarSesion(this.datosLogin.identificador, this.datosLogin.password);
                 
                 if (this.datosLogin.identificador.toLowerCase() === 'admin' || this.datosLogin.identificador === 'admin@casino.cl') {
                     window.location.href = 'admin.html';
@@ -54,7 +48,7 @@ document.addEventListener('alpine:init', () => {
             this.errorGeneral = '';
             this.mensajeExito = '';
             try {
-                this.sesionActiva = await usuarioService.reclamarBono();
+                this.sesionActiva = await window.usuarioService.reclamarBono();
                 this.mensajeExito = '¡$1.000 creditos añadidos a tu cuenta!';
             } catch (error) {
                 this.errorGeneral = error.message;
@@ -62,7 +56,7 @@ document.addEventListener('alpine:init', () => {
         },
 
         async salir() {
-            await usuarioService.cerrarSesion();
+            await window.usuarioService.cerrarSesion();
             this.sesionActiva = null;
             window.location.href = 'index.html';
         }
