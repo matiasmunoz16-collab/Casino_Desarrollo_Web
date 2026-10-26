@@ -1,4 +1,4 @@
-// Profesor es el CONTROLADOR de la lista (Alpine.data), esto Traduce interacciones en órdenes al servicio
+// Profesor esto el CONTROLADOR de la lista (Alpine.data), esto Traduce interacciones en órdenes al servicio
 // y deja el resultado en el estad
 function crearAdminJuegos(juegoService) {
     return {

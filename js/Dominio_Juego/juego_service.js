@@ -1,5 +1,5 @@
 
-// Recibe el repositorio por constructor (DIP). No lo construye ni nombra localStorage.
+// profe esto recibe el repositorio por constructor (DIP). No lo construye ni nombra localStorage.
 const TIPOS_JUEGO = ['Ruleta', 'Blackjack', 'Otro'];
 const MAX_IMAGEN = 400000; // aprox. 290 KB)
 
