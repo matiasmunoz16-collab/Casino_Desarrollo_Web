@@ -16,4 +16,20 @@ class LocalStorageApuestasRepository extends ApuestasRepository {
         historial.push(jugada);
         localStorage.setItem('historial_apuestas', JSON.stringify(historial));
     }
+
+    async eliminar(id) {
+        let historial = await this.obtener();
+        historial = historial.filter(j => j.id !== id);
+        localStorage.setItem('historial_apuestas', JSON.stringify(historial));
+    }
+
+    async actualizarNota(id, nota) {
+        let historial = await this.obtener();
+        const index = historial.findIndex(j => j.id === id);
+        if (index !== -1) {
+            historial[index].nota = nota;
+            localStorage.setItem('historial_apuestas', JSON.stringify(historial));
+        }
+    }
 }
+
