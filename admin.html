@@ -21,7 +21,7 @@
         <div id="Barra_Juegos">
             <nav class="Menu">
                 <a href="#" class="barra">Estadísticas</a>
-                <a href="#" class="barra">Juegos</a>
+                <a href="#juegos" class="barra">Juegos</a>
                 <a href="#" class="barra">Usuarios y Apuestas</a>
             </nav>
         </div>
@@ -55,32 +55,114 @@
                 </div>
             </section>
 
-            <section class="SeccionTabla" style="margin-bottom: 30px;">
+            <!-- Formulario de juego. se abre por evento. -->
+            <section class="SeccionTabla SeccionFormulario" style="display: none;"
+                    x-data="formularioJuego" x-show="visible"
+                    @abrir-formulario.window="abrir($event)">
+                <h3 x-text="titulo()"></h3>
+
+                <div class="MensajeError" x-show="error" role="alert">
+                    <span x-text="error"></span>
+                </div>
+
+                <form class="FormularioJuego" @submit.prevent="guardar()">
+                    <label class="CampoForm">Nombre
+                        <input type="text" x-model="nombre" maxlength="30" required>
+                    </label>
+
+                    <label class="CampoForm">Tipo de juego
+                        <select x-model="tipo">
+                            <option value="Ruleta">Ruleta</option>
+                            <option value="Blackjack">Blackjack</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </label>
+
+                    <label class="CampoForm">Descripción (opcional, máx. 200 caracteres)
+                        <textarea x-model="descripcion" maxlength="200" rows="3"></textarea>
+                    </label>
+
+                    <label class="CampoForm">Imagen (opcional, menos de 290 KB)
+                        <input type="file" accept="image/*" x-ref="archivo" @change="elegirImagen($event)">
+                    </label>
+                    <span class="DescripcionJuego" x-show="imagen">Imagen cargada</span>
+
+                    <div class="CampoApuestas">
+                        <label class="CampoForm">Apuesta mínima (créditos)
+                            <input type="number" x-model="apuestaMin" min="1" required>
+                        </label>
+                        <label class="CampoForm">Apuesta máxima (créditos)
+                            <input type="number" x-model="apuestaMax" min="1" required>
+                        </label>
+                    </div>
+
+                    <div class="Acciones">
+                        <button type="submit" class="BtnAgregar" :disabled="guardando" x-text="textoBoton()"></button>
+                        <button type="button" class="BtnEliminar" @click="cerrar()">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Lista de juegos -->
+            <section class="SeccionTabla" id="juegos" style="margin-bottom: 30px;"
+                    x-data="adminJuegos" x-init="cargar()" x-show="mostrandoLista"
+                    @juego-guardado.window="alGuardar($event)"
+                    @formulario-cerrado.window="alCerrarFormulario()">
                 <h3>Gestión de Juegos Disponibles</h3>
-                <table class="TablaAdmin">
+
+                <button type="button" class="BtnAgregar BtnNuevo" @click="nuevo()">Nuevo juego</button>
+
+                <!-- Estado de error -->
+                <div class="MensajeError" x-show="error" role="alert">
+                    <span x-text="error"></span>
+                </div>
+
+                <!-- Estado de carga -->
+                <p class="EstadoCargando" x-show="cargando">Cargando juegos...</p>
+
+                <!-- Estado de lista vacía -->
+                <div class="EstadoVacio" x-show="listaVacia()">
+                    <p>Aún no hay juegos creados. Presiona "Nuevo juego" para agregar el primero.</p>
+                </div>
+
+                <!-- Estado normal -->
+                <table class="TablaAdmin" x-show="hayJuegos()">
                     <thead>
                         <tr>
                             <th>ID Juego</th>
-                            <th>Nombre del Juego</th>
+                            <th>Juego</th>
+                            <th>Tipo</th>
+                            <th>Apuestas</th>
                             <th>Estado Actual</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#J01</td>
-                            <td>Ruleta Francesa</td>
-                            <td><span class="EstadoActivo">Activo</span></td>
-                            <!-- Botón para simular la desactivación de un juego -->
-                            <td><button class="BtnBloquear">Desactivar</button></td>
-                        </tr>
-                        <tr>
-                            <td>#J02</td>
-                            <td>Blackjack Clásico</td>
-                            <td><span class="EstadoBloqueado">Inactivo</span></td>
-                            <!-- Botón para simular la activación de un juego -->
-                            <td><button class="BtnDesbloquear">Activar</button></td>
-                        </tr>
+                        <template x-for="j in juegos" :key="j.id">
+                            <tr>
+                                <td x-text="j.id"></td>
+                                <td>
+                                    <div class="CeldaJuego">
+                                        <img class="MiniaturaJuego" :src="j.imagen" :alt="j.nombre" x-show="tieneImagen(j)">
+                                        <div>
+                                            <strong x-text="j.nombre"></strong>
+                                            <span class="DescripcionJuego" x-text="textoDescripcion(j)"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td x-text="textoTipo(j)"></td>
+                                <td x-text="textoApuestas(j)"></td>
+                                <td><span :class="claseEstado(j)" x-text="textoEstado(j)"></span></td>
+                                <td>
+                                    <div class="Acciones">
+                                        <button type="button" class="BtnAgregar" @click="editar(j)">Editar</button>
+                                        <button type="button" :class="claseBotonEstado(j)"
+                                                @click="alternarEstado(j.id)" x-text="textoBotonEstado(j)"></button>
+                                        <button type="button" class="BtnEliminar" @click="eliminar(j.id)">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
             </section>
@@ -119,5 +201,12 @@
         <p>2026 Casino Delfines. Plataforma académica sin uso de dinero real.</p>
     </footer>
     
+    <script src="js/Dominio_Juego/juego_repositorio.js" defer></script>
+    <script src="js/Dominio_Juego/storage_repositorio.js" defer></script>
+    <script src="js/Dominio_Juego/juego_service.js" defer></script>
+    <script src="js/Dominio_Juego/juego_controller.js" defer></script>
+    <script src="js/Dominio_Juego/juego_formulario_controller.js" defer></script>
+    <script src="js/Dominio_Juego/compositor_root.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
 </body>
 </html>

@@ -4,60 +4,74 @@
     padding: 0;
 }
 
+/* (375 px en adelante)*/
 body {
     font-family: system-ui, -apple-system, sans-serif;
-    background-color: #dce7f2; 
-    color: #1a2b3c; 
-    min-height: 100vh; 
+    background-color: #dce7f2;
+    color: #1a2b3c;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 header {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    background-color: #0b3c5d; 
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    background-color: #0b3c5d;
     color: #ffffff;
-    padding: 30px 60px;
+    padding: 20px 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos del Logo y Título */
 #Delfin { display: flex; flex-direction: row; align-items: center; gap: 20px; }
-#Palabra1 { font-size: 32px; font-weight: bold; color: #ffffff; }
-#Palabra2 { font-size: 32px; font-weight: bold; color: #00d2ff; }
-#logo { width: 100px; height: 100px; object-fit: contain; }
+#Palabra1 { font-size: 24px; font-weight: bold; color: #ffffff; }
+#Palabra2 { font-size: 24px; font-weight: bold; color: #00d2ff; }
+#logo { width: 70px; height: 70px; object-fit: contain; }
 
-/* Menú central */
-nav.Menu { display: flex; flex-direction: row; gap: 40px; font-size: 24px; }
-.barra { text-decoration: none; color: #ffffff; font-weight: 600; transition: color 0.2s; }
+nav.Menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+    font-size: 18px;
+}
+
+.barra {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.2s;
+    display: inline-block;
+    min-height: 44px;             /* área de toque mínima */
+    line-height: 44px;
+}
 .barra:hover { color: #00d2ff; cursor: pointer; }
 
+header > div:last-child { display: flex; justify-content: center; }
+
 .BtnSalir {
+    width: 200px;
     min-width: 150px;
     height: 45px;
-    border: 2px solid #e53e3e; 
+    border: 2px solid #e53e3e;
     border-radius: 8px;
     background-color: transparent;
     color: #e53e3e;
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
+}
+.BtnSalir:hover { background-color: #e53e3e; color: #ffffff; }
+
+main {
+    flex: 1;
+    padding: 30px 15px;
 }
 
-.BtnSalir:hover {
-    background-color: #e53e3e; 
-    color: #ffffff;
-}
-
-main { 
-    flex: 1; 
-    padding: 40px 20px; 
-}
-
-.ContenedorAdmin { 
+.ContenedorAdmin {
     max-width: 1100px;
     margin: 0 auto;
 }
@@ -66,16 +80,16 @@ main {
     background-color: #071e3d;
     color: #ffffff;
     border-radius: 12px;
-    padding: 25px 30px;
+    padding: 20px 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     margin-bottom: 25px;
 }
-.EncabezadoAdmin h2 { color: #00d2ff; font-size: 26px; }
+.EncabezadoAdmin h2 { color: #00d2ff; font-size: 21px; }
 
 .ResumenMetricas {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 15px;
     margin-bottom: 30px;
 }
 
@@ -85,46 +99,46 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    border-top: 4px solid #00d2ff; 
+    border-top: 4px solid #00d2ff;
 }
-
 .TarjetaMetrica h3 { color: #64748b; font-size: 16px; margin-bottom: 10px; }
 .ValorMetrica { color: #0b3c5d; font-size: 32px; font-weight: bold; }
 
 .SeccionTabla {
     background-color: #ffffff;
     border-radius: 12px;
-    padding: 25px 30px;
+    padding: 18px 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* permite desplazar las tablas en pantallas pequeñas */
+    overflow-x: auto; /* la tabla se desplaza dentro de su caja, no la página */
 }
-
 .SeccionTabla h3 { color: #0b3c5d; margin-bottom: 20px; }
+
+.SeccionFormulario { margin-bottom: 30px; }
 
 .TablaAdmin {
     width: 100%;
-    border-collapse: collapse; 
+    min-width: 720px;             /* en móvil la tabla se desplaza dentro de .SeccionTabla */
+    border-collapse: collapse;
     text-align: left;
 }
-
-.TablaAdmin th { 
-    background-color: #0b3c5d; 
-    color: #ffffff; 
-    padding: 15px; 
+.TablaAdmin th {
+    background-color: #0b3c5d;
+    color: #ffffff;
+    padding: 15px;
 }
-
-.TablaAdmin td { 
-    padding: 15px; 
-    border-bottom: 1px solid #e2e8f0; 
+.TablaAdmin td {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
 }
-
-.TablaAdmin tr:hover { background-color: #f8fafc; } 
+.TablaAdmin tr:hover { background-color: #f8fafc; }
 
 .dinero { color: #00897b; font-weight: bold; }
-.EstadoActivo { color: #00e676; font-weight: bold; } 
-.EstadoBloqueado { color: #e53e3e; font-weight: bold; } 
+.EstadoActivo { color: #00e676; font-weight: bold; }
+.EstadoBloqueado { color: #e53e3e; font-weight: bold; }
 
-.BtnBloquear, .BtnDesbloquear {
+/* Botones */
+.BtnBloquear, .BtnDesbloquear, .BtnEliminar, .BtnAgregar {
+    min-height: 44px;             /* área de toque mínima */
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -134,9 +148,101 @@ main {
 }
 .BtnBloquear { background-color: #e53e3e; }
 .BtnBloquear:hover { background-color: #c53030; }
-
 .BtnDesbloquear { background-color: #00897b; }
 .BtnDesbloquear:hover { background-color: #004d40; }
+.BtnEliminar { background-color: #475569; }
+.BtnEliminar:hover { background-color: #1e293b; }
+.BtnAgregar { background-color: #0b3c5d; }
+.BtnAgregar:hover { background-color: #071e3d; }
+
+.BtnNuevo { margin-bottom: 20px; }
+
+.Acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Formulario de juego */
+.FormularioJuego {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.CampoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+    color: #0b3c5d;
+}
+.CampoForm input,
+.CampoForm select,
+.CampoForm textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: inherit;
+}
+.CampoForm textarea { resize: vertical; }
+
+.CampoApuestas {
+    display: grid;
+    grid-template-columns: 1fr;   /* en móvil, una columna */
+    gap: 14px;
+}
+
+/* Tabla de juegos: celda con miniatura y descripción */
+.CeldaJuego {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.MiniaturaJuego {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+.DescripcionJuego {
+    display: block;
+    margin-top: 4px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Estados: error, carga y lista vacía */
+.MensajeError {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+}
+
+.EstadoCargando {
+    color: #64748b;
+    padding: 15px 0;
+    font-style: italic;
+}
+
+.EstadoVacio {
+    text-align: center;
+    color: #64748b;
+    padding: 30px 15px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+}
 
 footer {
     background-color: #000000;
@@ -147,48 +253,41 @@ footer {
     margin-top: auto;
 }
 
-@media (max-width: 900px) {
+/* (769 px en adelante)  */
+@media (min-width: 769px) {
+    main { padding: 40px 20px; }
 
-   
-    header {
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        padding: 20px 15px;
-    }
-    #logo { width: 70px; height: 70px; }
-    #Palabra1, #Palabra2 { font-size: 24px; }
+    .ResumenMetricas { grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
-    nav.Menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px 20px;
-        font-size: 18px;
-    }
+    .EncabezadoAdmin { padding: 25px 30px; }
+    .EncabezadoAdmin h2 { font-size: 26px; }
 
-    header > div:last-child {
-        display: flex;
-        justify-content: center;
-    }
-    .BtnSalir { width: 200px; }
+    .SeccionTabla { padding: 25px 30px; }
+
+    .TablaAdmin { min-width: 0; }
+
+    .CampoApuestas { grid-template-columns: 1fr 1fr; }   /* las apuestas pasan a dos columnas */
 }
 
-@media (max-width: 768px) {
-
-    main { padding: 30px 15px; }
-
-    
-    .ResumenMetricas {
-        grid-template-columns: 1fr;
-        gap: 15px;
+/* (901 px en adelante */
+@media (min-width: 901px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 60px;
     }
 
-    .EncabezadoAdmin {
-        padding: 20px 15px;
+    #Palabra1, #Palabra2 { font-size: 32px; }
+    #logo { width: 100px; height: 100px; }
+
+    nav.Menu {
+        flex-wrap: nowrap;
+        justify-content: initial;
+        gap: 40px;
+        font-size: 24px;
     }
-    .EncabezadoAdmin h2 { font-size: 21px; }
+    .barra { min-height: auto; line-height: normal; }
 
-    .SeccionTabla { padding: 18px 15px; }
-
-    .TablaAdmin { min-width: 480px; }
+    header > div:last-child { display: block; }
+    .BtnSalir { width: auto; }
 }
