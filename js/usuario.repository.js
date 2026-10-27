@@ -1,4 +1,4 @@
-export class UsuarioRepository {
+class UsuarioRepository {
     async listar() { throw new Error('No implementado'); }
     async crear(usuario) { throw new Error('No implementado'); }
     async editar(usuario) { throw new Error('No implementado'); }
@@ -8,7 +8,7 @@ export class UsuarioRepository {
     async cerrarSesion() { throw new Error('No implementado'); }
 }
 
-export class LocalStorageUsuarioRepository extends UsuarioRepository {
+class LocalStorageUsuarioRepository extends UsuarioRepository {
     constructor(){
         super ();
         this.claveUsuarios = 'casino_delfines_usuarios';
@@ -51,12 +51,12 @@ export class LocalStorageUsuarioRepository extends UsuarioRepository {
         return true;
     }
 
-    async obtenerSesion(usuario) {
+    async obtenerSesion() {
         const sesion = localStorage.getItem(this.claveSesion);
         return sesion ? JSON.parse(sesion) : null; 
     }
 
-    async guardarSesion() {
+    async guardarSesion(usuario) {
         localStorage.setItem(this.claveSesion, JSON.stringify(usuario));
         return usuario;
     }
@@ -66,4 +66,3 @@ export class LocalStorageUsuarioRepository extends UsuarioRepository {
         return true;
     }
 }
-
