@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador - Casino Delfines</title>
     <link rel="stylesheet" href="ccs_front/Admin.css">
-    <link rel="manifest" href="manifest.json"> 
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-        <header>
+    <header>
         <h1 id="Delfin">
             <img src="imagenes/delfincasino.jpg" alt="Logo Casino Delfines" id="logo">
-            <span class="Titulo">    
+            <span class="Titulo">
                 <span id="Palabra1">Casino</span>
                 <br>
                 <span id="Palabra2">Delfines</span>
@@ -40,16 +40,16 @@
             </section>
 
             <section id="estadisticas" x-data="adminMetricas" x-init="cargar()">
-                <!-- Estado de error -->
+                <!--  error -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                     <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
                 </div>
 
-                <!-- Estado de carga -->
+                <!-- carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando estadísticas...</p>
 
-                <!-- Estado normal -->
+                <!--  normal -->
                 <div class="ResumenMetricas" x-show="hayMetricas()">
                     <div class="TarjetaMetrica">
                         <h3>Usuarios Registrados</h3>
@@ -66,7 +66,7 @@
                 </div>
             </section>
 
-            <!-- Formulario de juego. se abre por evento. -->
+            <!--  se abre por evento. -->
             <section class="SeccionTabla SeccionFormulario" style="display: none;"
                     x-data="formularioJuego" x-show="visible"
                     @abrir-formulario.window="abrir($event)">
@@ -123,15 +123,15 @@
 
                 <button type="button" class="BtnAgregar BtnNuevo" @click="nuevo()">Nuevo juego</button>
 
-                <!-- Estado de error -->
+                <!--  error -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                 </div>
 
-                <!-- Estado de carga -->
+                <!--  carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando juegos...</p>
 
-                <!-- Estado de lista vacía -->
+                <!--lista vacía -->
                 <div class="EstadoVacio" x-show="listaVacia()">
                     <p>Aún no hay juegos creados. Presiona "Nuevo juego" para agregar el primero.</p>
                 </div>
@@ -183,21 +183,21 @@
                     x-data="adminUsuarios" x-init="cargar()">
                 <h3>Usuarios: Partidas Jugadas, Ganadas y Perdidas</h3>
 
-                <!-- Estado de error -->
+                <!-- Eserror -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                     <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
                 </div>
 
-                <!-- Estado de carga -->
+                <!--  carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando usuarios...</p>
 
-                <!-- Estado de lista vacía -->
+                <!--lista vacía -->
                 <div class="EstadoVacio" x-show="listaVacia()">
                     <p>Aún no hay usuarios registrados.</p>
                 </div>
 
-                <!-- Estado normal -->
+                <!--  normal -->
                 <table class="TablaAdmin" x-show="hayUsuarios()">
                     <thead>
                         <tr>
@@ -225,16 +225,16 @@
                     x-data="adminMovimientos" x-init="cargar()">
                 <h3>Consultas: Últimos Movimientos</h3>
 
-                <!-- Estado de error -->
+                <!--  error -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                     <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
                 </div>
 
-                <!-- Estado de carga -->
+                <!--  carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando movimientos...</p>
 
-                <!-- Estado de lista vacía -->
+                <!--  lista vacía -->
                 <div class="EstadoVacio" x-show="listaVacia()">
                     <p>Aún no hay apuestas registradas. Aparecerán aquí cuando los usuarios jueguen.</p>
                 </div>
@@ -267,8 +267,8 @@
     <footer>
         <p>2026 Casino Delfines. Plataforma académica sin uso de dinero real.</p>
     </footer>
-    
-    <!-- Usuarios y apuestas -->
+
+    <!-- Usuarios y apuestas (los lee el panel y usuarioController para cerrar sesión) -->
     <script src="js/apuestas.repository.js" defer></script>
     <script src="js/apuestas.service.js" defer></script>
     <script src="js/apuestas.controller.js" defer></script>
@@ -289,6 +289,9 @@
     <script src="js/Dominio_Juego/juego_service.js" defer></script>
     <script src="js/Dominio_Juego/juego_controller.js" defer></script>
     <script src="js/Dominio_Juego/juego_formulario_controller.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" defer></script>
+    <script src="js/Dominio_Juego/compositor_root.js" defer></script>
+
+    <!-- Alpine.js siempre al final: se registra después de los controladores -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
 </body>
 </html>
