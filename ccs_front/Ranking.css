@@ -19,8 +19,10 @@ header {
     align-items: center;
     background-color: #0b3c5d;
     color: #ffffff;
-    padding: 30px 60px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 15px;
 }
 
 #Delfin {
@@ -31,28 +33,30 @@ header {
 }
 
 #Palabra1 {
-    font-size: 32px;
     font-weight: bold;
     color: #ffffff;
+    font-size: 24px;
 }
 
 #Palabra2 {
-    font-size: 32px;
     font-weight: bold;
     color: #00d2ff;
+    font-size: 24px;
 }
 
 #logo {
-    width: 100px;
-    height: 100px;
     object-fit: contain;
+    width: 70px;
+    height: 70px;
 }
 
 nav.Menu {
     display: flex;
     flex-direction: row;
-    gap: 40px;
-    font-size: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+    font-size: 18px;
 }
 
 .barra {
@@ -67,19 +71,26 @@ nav.Menu {
     cursor: pointer;
 }
 
+header > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 button[type="login"], button[type="Login"] {
-    min-width: 180px;
-    height: 55px;
     border: 2px solid #00d2ff;
     border-radius: 8px;
     background-color: #071e3d;
     color: #ffffff;
     font-weight: bold;
-    font-size: 18px;
-    padding: 0 20px;
-    margin-left: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
+    padding: 0 20px;
+    min-width: 200px;
+    height: 46px;
+    font-size: 16px;
+    margin-left: 0;
 }
 
 button[type="login"]:hover, button[type="Login"]:hover {
@@ -89,7 +100,7 @@ button[type="login"]:hover, button[type="Login"]:hover {
 
 main {
     flex: 1;
-    padding: 40px 20px;
+    padding: 20px 15px;
 }
 
 .contenedor-ranking {
@@ -101,8 +112,8 @@ main {
     background-color: #071e3d;
     color: #ffffff;
     border-radius: 12px 12px 0 0;
-    padding: 25px 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 20px 18px;
 }
 
 .EncabezadoRanking h2 {
@@ -119,9 +130,9 @@ main {
 .SeccionTabla {
     background-color: #ffffff;
     border-radius: 0 0 12px 12px;
-    padding: 25px 30px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
+    padding: 18px;
 }
 
 .TablaRanking {
@@ -165,48 +176,44 @@ footer {
     margin-top: auto;
 }
 
-
-@media (max-width: 900px) {
-
-    
-    header {
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        padding: 20px 15px;
+@media (min-width: 769px) {
+    main { 
+        padding: 40px 20px; 
     }
-    #logo { width: 70px; height: 70px; }
-    #Palabra1, #Palabra2 { font-size: 24px; }
-
-    nav.Menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px 20px;
-        font-size: 18px;
+    .EncabezadoRanking {
+        padding: 25px 30px;
     }
-
-    header > div:last-child {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    button[type="login"], button[type="Login"] {
-        min-width: 200px;
-        height: 46px;
-        font-size: 16px;
-        margin-left: 0;
+    .SeccionTabla {
+        padding: 25px 30px;
     }
 }
 
-@media (max-width: 768px) {
-
-  
-    .EncabezadoRanking {
-        padding: 20px 18px;
+@media (min-width: 901px) {
+    header {
+        flex-direction: row;
+        padding: 30px 60px;
+        gap: normal;
     }
-    .SeccionTabla {
-        padding: 18px;
+    #logo { 
+        width: 100px; 
+        height: 100px; 
     }
-    main { padding: 20px 15px; }
+    #Palabra1, #Palabra2 { 
+        font-size: 32px; 
+    }
+    nav.Menu {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 40px;
+        font-size: 24px;
+    }
+    header > div:last-child {
+        display: block;
+    }
+    button[type="login"], button[type="Login"] {
+        min-width: 180px;
+        height: 55px;
+        font-size: 18px;
+        margin-left: 15px;
+    }
 }
