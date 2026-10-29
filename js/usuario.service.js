@@ -1,4 +1,4 @@
-export class UsuarioService {
+class UsuarioService {
     constructor(repo){
         this.repo = repo;
     }
