@@ -4,3 +4,7 @@ window.apuestasController = new ApuestasController(apuestasService); // controla
 
 const usuarioRepo = new LocalStorageUsuarioRepository(); // repositorio de usuarios
 window.usuarioService = new UsuarioService(usuarioRepo); // servicio de usuarios y le paso su repositorio
+
+//(Dominio_Admin) los reciba por constructor
+window.usuarioRepositorio = usuarioRepo;
+window.apuestasRepositorio = apuestasRepo;
