@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Delfines</title>
-    <link rel="stylesheet" href="/ccs_front/Inicio.css">
+    <link rel="stylesheet" href="ccs_front/Inicio.css">
 </head>
-<body>
+<body x-data="usuarioController">
 
     <header>
         <h1 id="Delfin">
-            <img src="/imagenes/delfincasino.jpg" alt="Logo Casino Delfines" id="logo">
+            <img src="imagenes/delfincasino.jpg" alt="Logo Casino Delfines" id="logo">
             <span class="Titulo">    
                 <span id="Palabra1">Casino</span>
                 <br>
@@ -27,16 +27,30 @@
         </div>
 
         <div>
-            <a href="Login.html">
-                <button href="Login.html" type="Login">Iniciar sesion</button>
-                <button href="Login.html" type="Login">Registrar cuenta</button>
-            </a>
+            <div x-show="!sesionActiva" style="display: flex; gap: 10px;">
+                <a href="Login.html">
+                    <button type="Login">Iniciar sesion</button>
+                </a>
+                <a href="Login.html">
+                    <button type="Login">Registrar cuenta</button>
+                </a>
+            </div>
+            
+            <div x-show="sesionActiva" style="display: none;">
+                <button type="button" @click="salir()" title="Haz clic para cerrar sesión" style="display: flex; align-items: center; gap: 12px; background-color: #071e3d; border: 2px solid #00d2ff; color: #ffffff; padding: 10px 18px; border-radius: 25px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease;">
+                    <span style="font-size: 18px;">👤</span>
+                    <span x-text="sesionActiva?.nombre"></span>
+                    <span style="color: #00e676; border-left: 1px solid #1d5087; padding-left: 12px; display: flex; align-items: center; gap: 5px;">
+                        $<span x-text="sesionActiva?.creditos"></span>
+                    </span>
+                    
+                    <span style="color: #ff4444; font-size: 12px; margin-left: 5px;">(Salir)</span>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
-
- 
         <section class="Resumen">
             <div class="Bien">
                 <h2>Bienvenido De Vuelta</h2>
@@ -53,16 +67,16 @@
             </div>
 
             <div class="Obtener_Creditos">
-                <a href="Creditos.html" >
-                    <h3 id="creditos_" >Obtener Creditos Inicales</h3>
+                <a href="Creditos.html">
+                    <h3 id="creditos_">Obtener Creditos Inicales</h3>
                 </a>
+            </div>
         </section>
 
         <section class="Cuadrados" id="juegos">
-
             <div id="Cuadrado1">
                 <a href="ruleta.html">
-                    <img src="/imagenes/images_007_d-RH.jpg" alt="Logo Ruleta" id="Ruleta">
+                    <img src="imagenes/images_007_d-RH.jpg" alt="Logo Ruleta" id="Ruleta">
                     <h2 class="Juego"> Ruleta Clasica </h2>
                     <p class="Descripcion"> Tire la ruleta </p>    
                 </a>    
@@ -70,32 +84,35 @@
 
             <div id="Cuadrado2">
                 <a href="blackjack.html">
-                    <img src="/imagenes/blackjack-logo-with-green-ribbon-and-on-a-green-backgro_BQog.jpg" alt="Logo Blackjack" id="BalckJack">
+                    <img src="imagenes/blackjack-logo-with-green-ribbon-and-on-a-green-backgro_BQog.jpg" alt="Logo Blackjack" id="BalckJack">
                     <h2 class="Juego"> Blackjack </h2>
                     <p class="Descripcion"> Desafía a la casa </p>    
                 </a>
             </div>
 
-            <!-- Dejarlo asi para usar a futuro JS/Backend -->
             <div id="Cuadrado3">
                 <h2 class="Juego"> Ranking  </h2>
                 
                 <ol id="live-ranking-list">
-                    <!-- JavaScript insertará aquí el Top 3 o Top 5 -->
                     <li>posiciones </li>
                 </ol>
 
                 <a href="Ranking.html" class="ver-todo">Ver tabla completa</a>
             </div>
-
         </section>
-
     </main>
 
     <footer>
         <p>2026 Casino Los Mirandas. Todos los derechos reservados. Solo para fines académicos y entretenimiento con créditos virtuales.</p>
     </footer>
 
-    <script src=""></script>
+    <script src="js/apuestas.repository.js"></script>
+    <script src="js/apuestas.service.js"></script>
+    <script src="js/apuestas.controller.js"></script>
+    <script src="js/usuario.repository.js"></script>
+    <script src="js/usuario.service.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/usuario.controller.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
