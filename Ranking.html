@@ -37,7 +37,7 @@
                 </a>
             </div>
             
-            <div x-show="sesionActiva" style="display: none;">
+            <div x-show="sesionActiva">
                 <button type="button" @click="salir()" title="Haz clic para cerrar sesión" style="display: flex; align-items: center; gap: 12px; background-color: #071e3d; border: 2px solid #00d2ff; color: #ffffff; padding: 10px 18px; border-radius: 25px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease;">
                     <span style="font-size: 18px;">👤</span>
                     <span x-text="sesionActiva?.nombre"></span>
@@ -94,6 +94,6 @@
     <script src="js/usuario.service.js"></script>
     <script src="js/main.js"></script>
     <script src="js/usuario.controller.js"></script>
-    <script defer src="[https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js](https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js)"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
 </body>
 </html>
