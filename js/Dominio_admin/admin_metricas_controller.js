@@ -1,4 +1,3 @@
-// x-data="adminMetricas").
 function crearAdminMetricas(adminService) {
     return {
         metricas: null,
@@ -29,7 +28,7 @@ function crearAdminMetricas(adminService) {
             return !this.cargando && !this.error && this.metricas !== null;
         },
 
-        // vista
+        // Formato para la vista 
         formatear(numero) {
             return Number(numero).toLocaleString('es-CL');
         },

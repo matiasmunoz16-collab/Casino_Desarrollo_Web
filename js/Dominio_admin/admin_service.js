@@ -1,5 +1,5 @@
-// cada apuesta guardada por los juegos:
-//   { id, usuarioId, juego, monto, resultado: 'ganada' | 'perdida', ganancia (opcional), fecha (ISO) }
+
+//{ id, usuarioId, juego, monto, resultado: 'ganada' | 'perdida', ganancia (opcional), fecha (ISO) }
 
 class AdminService {
     constructor(usuarioRepositorio, apuestasRepositorio) {
@@ -54,7 +54,7 @@ class AdminService {
             }));
     }
 
-    // Regla internas
+    // --- Reglas internas ---
     async _leerDatos() {
         try {
             const usuarios = await this.usuarioRepositorio.listar();

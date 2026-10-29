@@ -20,16 +20,14 @@
 
         <div id="Barra_Juegos">
             <nav class="Menu">
-                <a href="#" class="barra">Estadísticas</a>
+                <a href="#estadisticas" class="barra">Estadísticas</a>
                 <a href="#juegos" class="barra">Juegos</a>
-                <a href="#" class="barra">Usuarios y Apuestas</a>
+                <a href="#usuarios" class="barra">Usuarios y Apuestas</a>
             </nav>
         </div>
 
-        <div>
-            <a href="index.html">
-                <button type="button" class="BtnSalir">Cerrar Sesión</button>
-            </a>
+        <div x-data="usuarioController">
+            <button type="button" class="BtnSalir" @click="salir()">Cerrar Sesión</button>
         </div>
     </header>
 
@@ -40,18 +38,30 @@
                 <p>Gestión de plataforma y usuarios</p>
             </section>
 
-            <section class="ResumenMetricas">
-                <div class="TarjetaMetrica">
-                    <h3>Usuarios Registrados</h3>
-                    <span class="ValorMetrica">124</span>
+            <section id="estadisticas" x-data="adminMetricas" x-init="cargar()">
+                <!-- Estado de error -->
+                <div class="MensajeError" x-show="error" role="alert">
+                    <span x-text="error"></span>
+                    <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
                 </div>
-                <div class="TarjetaMetrica">
-                    <h3>Partidas Jugadas Hoy</h3>
-                    <span class="ValorMetrica">890</span>
-                </div>
-                <div class="TarjetaMetrica">
-                    <h3>Movimiento de Créditos</h3>
-                    <span class="ValorMetrica">2,540,000 cr.</span>
+
+                <!-- Estado de carga -->
+                <p class="EstadoCargando" x-show="cargando">Cargando estadísticas...</p>
+
+                <!-- Estado normal -->
+                <div class="ResumenMetricas" x-show="hayMetricas()">
+                    <div class="TarjetaMetrica">
+                        <h3>Usuarios Registrados</h3>
+                        <span class="ValorMetrica" x-text="textoUsuarios()"></span>
+                    </div>
+                    <div class="TarjetaMetrica">
+                        <h3>Partidas Jugadas Hoy</h3>
+                        <span class="ValorMetrica" x-text="textoPartidasHoy()"></span>
+                    </div>
+                    <div class="TarjetaMetrica">
+                        <h3>Movimiento de Créditos</h3>
+                        <span class="ValorMetrica" x-text="textoMovimiento()"></span>
+                    </div>
                 </div>
             </section>
 
@@ -167,9 +177,69 @@
                 </table>
             </section>
 
-            <section class="SeccionTabla">
-                <h3>Consultas: Últimos Movimientos y Usuarios</h3>
-                <table class="TablaAdmin">
+            <!-- Usuarios: partidas jugadas, ganadas y perdidas -->
+            <section class="SeccionTabla" id="usuarios" style="margin-bottom: 30px;"
+                    x-data="adminUsuarios" x-init="cargar()">
+                <h3>Usuarios: Partidas Jugadas, Ganadas y Perdidas</h3>
+
+                <!-- Estado de error -->
+                <div class="MensajeError" x-show="error" role="alert">
+                    <span x-text="error"></span>
+                    <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
+                </div>
+
+                <!-- Estado de carga -->
+                <p class="EstadoCargando" x-show="cargando">Cargando usuarios...</p>
+
+                <!-- Estado de lista vacía -->
+                <div class="EstadoVacio" x-show="listaVacia()">
+                    <p>Aún no hay usuarios registrados.</p>
+                </div>
+
+                <!-- Estado normal -->
+                <table class="TablaAdmin" x-show="hayUsuarios()">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Jugadas</th>
+                            <th>Ganadas</th>
+                            <th>Perdidas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="u in usuarios" :key="u.id">
+                            <tr>
+                                <td x-text="u.nombre"></td>
+                                <td x-text="u.jugadas"></td>
+                                <td><span class="EstadoActivo" x-text="u.ganadas"></span></td>
+                                <td><span class="EstadoBloqueado" x-text="u.perdidas"></span></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Últimos movimientos -->
+            <section class="SeccionTabla" id="movimientos"
+                    x-data="adminMovimientos" x-init="cargar()">
+                <h3>Consultas: Últimos Movimientos</h3>
+
+                <!-- Estado de error -->
+                <div class="MensajeError" x-show="error" role="alert">
+                    <span x-text="error"></span>
+                    <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
+                </div>
+
+                <!-- Estado de carga -->
+                <p class="EstadoCargando" x-show="cargando">Cargando movimientos...</p>
+
+                <!-- Estado de lista vacía -->
+                <div class="EstadoVacio" x-show="listaVacia()">
+                    <p>Aún no hay apuestas registradas. Aparecerán aquí cuando los usuarios jueguen.</p>
+                </div>
+
+                <!-- Estado normal -->
+                <table class="TablaAdmin" x-show="hayMovimientos()">
                     <thead>
                         <tr>
                             <th>Usuario</th>
@@ -179,18 +249,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>DelfinMaestro</td>
-                            <td>Ruleta (#P-1042)</td>
-                            <td class="dinero">500 cr.</td>
-                            <td><span class="EstadoActivo">+1000 cr.</span></td>
-                        </tr>
-                        <tr>
-                            <td>CarlosPro99</td>
-                            <td>Ruleta (#P-1043)</td>
-                            <td class="dinero">200 cr.</td>
-                            <td><span class="EstadoBloqueado">-200 cr.</span></td>
-                        </tr>
+                        <template x-for="(m, i) in movimientos" :key="i">
+                            <tr>
+                                <td x-text="m.usuario"></td>
+                                <td x-text="textoPartida(m)"></td>
+                                <td class="dinero" x-text="textoApuesta(m)"></td>
+                                <td><span :class="claseResultado(m)" x-text="textoResultado(m)"></span></td>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
             </section>
@@ -201,6 +267,22 @@
         <p>2026 Casino Delfines. Plataforma académica sin uso de dinero real.</p>
     </footer>
     
+    <!-- Usuarios y apuestas -->
+    <script src="js/apuestas.repository.js" defer></script>
+    <script src="js/apuestas.service.js" defer></script>
+    <script src="js/apuestas.controller.js" defer></script>
+    <script src="js/usuario.repository.js" defer></script>
+    <script src="js/usuario.service.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/usuario.controller.js" defer></script>
+
+    <!-- Dominio Admin -->
+    <script src="js/Dominio_Admin/admin_service.js" defer></script>
+    <script src="js/Dominio_Admin/admin_metricas_controller.js" defer></script>
+    <script src="js/Dominio_Admin/admin_usuarios_controller.js" defer></script>
+    <script src="js/Dominio_Admin/admin_movimientos_controller.js" defer></script>
+
+    <!-- Dominio Juego -->
     <script src="js/Dominio_Juego/juego_repositorio.js" defer></script>
     <script src="js/Dominio_Juego/storage_repositorio.js" defer></script>
     <script src="js/Dominio_Juego/juego_service.js" defer></script>
