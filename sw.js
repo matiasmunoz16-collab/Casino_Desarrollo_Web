@@ -1,4 +1,4 @@
-const VERSION = 'casino-delfines-v2';
+const VERSION = 'casino-delfines-v3';
 const ALPINE_CDN = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js';
 
 const SHELL = [

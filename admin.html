@@ -40,16 +40,16 @@
             </section>
 
             <section id="estadisticas" x-data="adminMetricas" x-init="cargar()">
-                <!--  error -->
+                <!-- error -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                     <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
                 </div>
 
-                <!-- carga -->
+                <!--carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando estadísticas...</p>
 
-                <!--  normal -->
+                <!--normal -->
                 <div class="ResumenMetricas" x-show="hayMetricas()">
                     <div class="TarjetaMetrica">
                         <h3>Usuarios Registrados</h3>
@@ -123,12 +123,12 @@
 
                 <button type="button" class="BtnAgregar BtnNuevo" @click="nuevo()">Nuevo juego</button>
 
-                <!--  error -->
+                <!-- error -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                 </div>
 
-                <!--  carga -->
+                <!--carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando juegos...</p>
 
                 <!--lista vacía -->
@@ -136,7 +136,7 @@
                     <p>Aún no hay juegos creados. Presiona "Nuevo juego" para agregar el primero.</p>
                 </div>
 
-                <!-- Estado normal -->
+                <!--normal -->
                 <table class="TablaAdmin" x-show="hayJuegos()">
                     <thead>
                         <tr>
@@ -183,21 +183,21 @@
                     x-data="adminUsuarios" x-init="cargar()">
                 <h3>Usuarios: Partidas Jugadas, Ganadas y Perdidas</h3>
 
-                <!-- Eserror -->
+                <!--error -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                     <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
                 </div>
 
-                <!--  carga -->
+                <!--carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando usuarios...</p>
 
-                <!--lista vacía -->
+                <!-- lista vacía -->
                 <div class="EstadoVacio" x-show="listaVacia()">
                     <p>Aún no hay usuarios registrados.</p>
                 </div>
 
-                <!--  normal -->
+                <!--normal -->
                 <table class="TablaAdmin" x-show="hayUsuarios()">
                     <thead>
                         <tr>
@@ -225,21 +225,21 @@
                     x-data="adminMovimientos" x-init="cargar()">
                 <h3>Consultas: Últimos Movimientos</h3>
 
-                <!--  error -->
+                <!--error -->
                 <div class="MensajeError" x-show="error" role="alert">
                     <span x-text="error"></span>
                     <button type="button" class="BtnAgregar" @click="cargar()">Reintentar</button>
                 </div>
 
-                <!--  carga -->
+                <!--carga -->
                 <p class="EstadoCargando" x-show="cargando">Cargando movimientos...</p>
 
-                <!--  lista vacía -->
+                <!--lista vacía -->
                 <div class="EstadoVacio" x-show="listaVacia()">
                     <p>Aún no hay apuestas registradas. Aparecerán aquí cuando los usuarios jueguen.</p>
                 </div>
 
-                <!-- Estado normal -->
+                <!--normal -->
                 <table class="TablaAdmin" x-show="hayMovimientos()">
                     <thead>
                         <tr>
