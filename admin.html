@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador - Casino Delfines</title>
     <link rel="stylesheet" href="ccs_front/Admin.css">
-    <link rel="manifest" href="manifest.json"> 
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-        <header>
+    <header>
         <h1 id="Delfin">
             <img src="imagenes/delfincasino.jpg" alt="Logo Casino Delfines" id="logo">
-            <span class="Titulo">    
+            <span class="Titulo">
                 <span id="Palabra1">Casino</span>
                 <br>
                 <span id="Palabra2">Delfines</span>
@@ -66,7 +66,7 @@
                 </div>
             </section>
 
-            <!-- Formulario de juego. se abre por evento. -->
+            <!--  se abre por evento. -->
             <section class="SeccionTabla SeccionFormulario" style="display: none;"
                     x-data="formularioJuego" x-show="visible"
                     @abrir-formulario.window="abrir($event)">
@@ -267,8 +267,8 @@
     <footer>
         <p>2026 Casino Delfines. Plataforma académica sin uso de dinero real.</p>
     </footer>
-    
-    <!-- Usuarios y apuestas -->
+
+    <!-- Usuarios y apuestas (los lee el panel y usuarioController para cerrar sesión) -->
     <script src="js/apuestas.repository.js" defer></script>
     <script src="js/apuestas.service.js" defer></script>
     <script src="js/apuestas.controller.js" defer></script>
@@ -289,6 +289,9 @@
     <script src="js/Dominio_Juego/juego_service.js" defer></script>
     <script src="js/Dominio_Juego/juego_controller.js" defer></script>
     <script src="js/Dominio_Juego/juego_formulario_controller.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" defer></script>
+    <script src="js/Dominio_Juego/compositor_root.js" defer></script>
+
+    <!-- Alpine.js siempre al final: se registra después de los controladores -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
 </body>
 </html>
