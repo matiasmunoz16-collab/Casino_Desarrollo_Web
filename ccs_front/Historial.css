@@ -19,8 +19,10 @@ header {
     align-items: center;
     background-color: #0b3c5d;
     color: #ffffff;
-    padding: 30px 60px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 15px;
 }
 
 #Delfin {
@@ -31,28 +33,30 @@ header {
 }
 
 #Palabra1 {
-    font-size: 32px;
     font-weight: bold;
     color: #ffffff;
+    font-size: 24px;
 }
 
 #Palabra2 {
-    font-size: 32px;
     font-weight: bold;
     color: #00d2ff;
+    font-size: 24px;
 }
 
 #logo {
-    width: 100px;
-    height: 100px;
     object-fit: contain;
+    width: 70px;
+    height: 70px;
 }
 
 nav.Menu {
     display: flex;
     flex-direction: row;
-    gap: 40px;
-    font-size: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+    font-size: 18px;
 }
 
 .barra {
@@ -67,19 +71,26 @@ nav.Menu {
     cursor: pointer;
 }
 
+header > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
 button[type="login"], button[type="Login"] {
-    min-width: 180px;
-    height: 55px;
     border: 2px solid #00d2ff;
     border-radius: 8px;
     background-color: #071e3d;
     color: #ffffff;
     font-weight: bold;
-    font-size: 18px;
-    padding: 0 20px;
-    margin-left: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
+    padding: 0 20px;
+    min-width: 200px;
+    height: 46px;
+    font-size: 16px;
+    margin-left: 0;
 }
 
 button[type="login"]:hover, button[type="Login"]:hover {
@@ -96,16 +107,18 @@ main {
     color: #ffffff;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    margin: 30px 50px;
-    padding: 25px 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+    margin: 20px 15px;
+    padding: 20px;
 }
 
 .Bien {
-    font-size: 24px;
     color: #ffffff;
+    font-size: 20px;
 }
 
 .Total_Credito, .Mayor_Ganancia {
@@ -120,12 +133,12 @@ main {
 }
 
 .SeccionTabla {
-    margin: 30px 50px;
     background-color: #ffffff;
     border-radius: 12px;
-    padding: 25px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
+    margin: 20px 15px;
+    padding: 15px;
 }
 
 .TablaHistorial {
@@ -164,55 +177,49 @@ footer {
     margin-top: auto;
 }
 
-
-@media (max-width: 900px) {
-
-  
-    header {
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        padding: 20px 15px;
+@media (min-width: 769px) {
+    .Resumen {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        text-align: left;
+        margin: 30px 50px;
+        padding: 25px 30px;
     }
-    #logo { width: 70px; height: 70px; }
-    #Palabra1, #Palabra2 { font-size: 24px; }
-
-    nav.Menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px 20px;
-        font-size: 18px;
+    .Bien { 
+        font-size: 24px; 
     }
-
-    header > div:last-child {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    button[type="login"], button[type="Login"] {
-        min-width: 200px;
-        height: 46px;
-        font-size: 16px;
-        margin-left: 0;
+    .SeccionTabla {
+        margin: 30px 50px;
+        padding: 25px;
     }
 }
 
-@media (max-width: 768px) {
-
-    
-    .Resumen {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        text-align: center;
-        margin: 20px 15px;
-        padding: 20px;
+@media (min-width: 901px) {
+    header {
+        flex-direction: row;
+        padding: 30px 60px;
+        gap: normal;
     }
-    .Bien { font-size: 20px; }
-
-    
-    .SeccionTabla {
-        margin: 20px 15px;
-        padding: 15px;
+    #logo { 
+        width: 100px; 
+        height: 100px; 
+    }
+    #Palabra1, #Palabra2 { 
+        font-size: 32px; 
+    }
+    nav.Menu {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 40px;
+        font-size: 24px;
+    }
+    header > div:last-child {
+        display: block;
+    }
+    button[type="login"], button[type="Login"] {
+        min-width: 180px;
+        height: 55px;
+        font-size: 18px;
+        margin-left: 15px;
     }
 }
