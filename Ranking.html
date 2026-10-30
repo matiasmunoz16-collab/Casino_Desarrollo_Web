@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking Top 50 - Casino Delfines</title>
     <link rel="stylesheet" href="ccs_front/Ranking.css">
+    <link rel="manifest" href="manifest.json">
 </head>
-<body>
+<body x-data="usuarioController" x-init="cargarRanking()">
 
     <header>
         <h1 id="Delfin">
@@ -27,10 +28,25 @@
         </div>
 
         <div>
-            <a href="Login.html">
-                <button type="Login">Iniciar sesion</button>
-                <button type="Login">Registrar cuenta</button>
-            </a>
+            <div x-show="!sesionActiva" style="display: flex; gap: 10px;">
+                <a href="Login.html">
+                    <button type="button" style="background-color: transparent; border: 1px solid #00bfff; color: white; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer;">Iniciar sesion</button>
+                </a>
+                <a href="Login.html">
+                    <button type="button" style="background-color: transparent; border: 1px solid #00bfff; color: white; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer;">Registrar cuenta</button>
+                </a>
+            </div>
+            
+            <div x-show="sesionActiva">
+                <button type="button" @click="salir()" title="Haz clic para cerrar sesión" style="display: flex; align-items: center; gap: 12px; background-color: #071e3d; border: 2px solid #00d2ff; color: #ffffff; padding: 10px 18px; border-radius: 25px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease;">
+                    <span style="font-size: 18px;">👤</span>
+                    <span x-text="sesionActiva?.nombre"></span>
+                    <span style="color: #00e676; border-left: 1px solid #1d5087; padding-left: 12px; display: flex; align-items: center; gap: 5px;">
+                        $<span x-text="sesionActiva?.creditos"></span>
+                    </span>
+                    <span style="color: #ff4444; font-size: 12px; margin-left: 5px;">(Salir)</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -51,17 +67,15 @@
                         </tr>
                     </thead>
                     <tbody id="ranking-body">
-                        <!-- Filas inyectadas por JS -->
-
-                        <tr> <!--- Datos de prueba para ver como quedarian se quitaran a futuro-->
-                            <td>#1</td>
-                            <td>DelfinMaestro</td>
-                            <td class="creditos">$50,250</td>
-                        </tr>
-                        <tr>
-                            <td>#2</td>
-                            <td>CarlosPro99</td>
-                            <td class="creditos">$42,100</td>
+                        <template x-for="(usuario, index) in ranking" :key="usuario.id">
+                            <tr>
+                                <td x-text="'#' + (index + 1)"></td>
+                                <td x-text="usuario.nombre"></td>
+                                <td class="creditos" x-text="'$' + usuario.creditos"></td>
+                            </tr>
+                        </template>
+                        <tr x-show="ranking.length === 0">
+                            <td colspan="3" style="text-align: center;">No hay jugadores registrados todavía.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,6 +87,13 @@
         <p>2026 Casino Los Mirandas. Todos los derechos reservados. Solo para fines académicos y entretenimiento con créditos virtuales.</p>
     </footer>
 
-    <script src=""></script>
+    <script src="js/apuestas.repository.js"></script>
+    <script src="js/apuestas.service.js"></script>
+    <script src="js/apuestas.controller.js"></script>
+    <script src="js/usuario.repository.js"></script>
+    <script src="js/usuario.service.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/usuario.controller.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
 </body>
 </html>
