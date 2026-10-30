@@ -32,3 +32,6 @@ Esta entrega corresponde a un Frontend dinámico y Aplicación Web Progresiva (P
   * Servicio: js/Dominio_Admin/admin_service.js, js/Dominio_Juego/juego_service.js
   * Repositorio: Reutiliza usuario y apuestas; js/Dominio_Juego/storage_repositorio.js
 * **Composition Root:** js/main.js
+
+## Presentación del Proyecto
+[Haz clic aquí para ver el video de presentación del Casino](https://drive.google.com/drive/folders/1dI90wrrXkXyvcuCQLv-0AaWPj17T8V5-?usp=sharing)
