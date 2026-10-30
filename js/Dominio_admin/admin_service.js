@@ -57,7 +57,8 @@ class AdminService {
     // --- Reglas internas ---
     async _leerDatos() {
         try {
-            const usuarios = await this.usuarioRepositorio.listar();
+            const todos = await this.usuarioRepositorio.listar();
+            const usuarios = todos.filter(u => u.id !== 'admin');
             const apuestas = await this.apuestasRepositorio.obtener();
             return { usuarios, apuestas };
         } catch (e) {

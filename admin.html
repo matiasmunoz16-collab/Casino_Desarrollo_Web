@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="ccs_front/Admin.css">
     <link rel="manifest" href="manifest.json">
 </head>
-<body>
+<<body x-data="accesoAdmin" x-init="verificar()">>
 
-    <header>
+    <header x-show="autorizado" style="display: none;">
         <h1 id="Delfin">
             <img src="imagenes/delfincasino.jpg" alt="Logo Casino Delfines" id="logo">
             <span class="Titulo">
@@ -31,7 +31,7 @@
             <button type="button" class="BtnSalir" @click="salir()">Cerrar Sesión</button>
         </div>
     </header>
-
+    <template x-if="autorizado">
     <main>
         <div class="ContenedorAdmin">
             <section class="EncabezadoAdmin">
@@ -262,7 +262,9 @@
                 </table>
             </section>
         </div>
+    
     </main>
+    </template>
 
     <footer>
         <p>2026 Casino Delfines. Plataforma académica sin uso de dinero real.</p>
@@ -278,10 +280,11 @@
     <script src="js/usuario.controller.js" defer></script>
 
     <!-- Dominio Admin -->
-    <script src="js/Dominio_Admin/admin_service.js" defer></script>
-    <script src="js/Dominio_Admin/admin_metricas_controller.js" defer></script>
-    <script src="js/Dominio_Admin/admin_usuarios_controller.js" defer></script>
-    <script src="js/Dominio_Admin/admin_movimientos_controller.js" defer></script>
+    <script src="js/Dominio_admin/admin_service.js" defer></script>
+    <script src="js/Dominio_admin/admin_metricas_controller.js" defer></script>
+    <script src="js/Dominio_admin/admin_usuarios_controller.js" defer></script>
+    <script src="js/Dominio_admin/admin_movimientos_controller.js" defer></script>
+    <script src="js/Dominio_admin/admin_acceso_controller.js" defer></script>
 
     <!-- Dominio Juego -->
     <script src="js/Dominio_Juego/juego_repositorio.js" defer></script>
@@ -291,7 +294,6 @@
     <script src="js/Dominio_Juego/juego_formulario_controller.js" defer></script>
     <script src="js/Dominio_Juego/compositor_root.js" defer></script>
 
-    <!-- Alpine.js siempre al final: se registra después de los controladores -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
 </body>
 </html>

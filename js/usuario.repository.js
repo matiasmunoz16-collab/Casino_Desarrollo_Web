@@ -20,12 +20,18 @@ class LocalStorageUsuarioRepository extends UsuarioRepository {
         if(!datos) {
             const iniciales = [
                 { id: 'u1', nombre: 'DelfinMaestro', email: 'maestro@delfines.cl', password: '12345', creditos: 50250, bonoReclamado: true },
-                { id: 'u2',nombre: 'CarlosPro99', email: 'carlos@delfines.cl', password: '12345', creditos: 42100, bonoReclamado: true }
+                { id: 'u2',nombre: 'CarlosPro99', email: 'carlos@delfines.cl', password: '12345', creditos: 42100, bonoReclamado: true },
+                { id: 'admin', nombre: 'admin', email: 'admin@casino.cl', password: '1234', creditos: 0, bonoReclamado: true }
             ];
             localStorage.setItem(this.claveUsuarios, JSON.stringify(iniciales));
             return iniciales;
         }
-        return JSON.parse(datos);
+        const usuarios = JSON.parse(datos);
+        if (!usuarios.some(u => u.id === 'admin')) {
+            usuarios.push({ id: 'admin', nombre: 'admin', email: 'admin@casino.cl', password: '1234', creditos: 0, bonoReclamado: true });
+            localStorage.setItem(this.claveUsuarios, JSON.stringify(usuarios));
+        }
+        return usuarios;
     }
 
     async crear(usuario) {
