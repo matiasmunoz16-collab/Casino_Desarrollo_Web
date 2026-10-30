@@ -5,7 +5,16 @@ class UsuarioService {
 
     async obtenerRanking() {
         const usuarios = await this.repo.listar();
-        return [...usuarios].sort((a, b) => b.creditos - a.creditos);
+        const jugadores = usuarios.filter(u => u.id !== 'admin');
+        return jugadores.sort((a, b) => b.creditos - a.creditos);
+    }
+
+    async obtenerSesionAdmin() {
+        const sesion = await this.repo.obtenerSesion();
+        if (!sesion || sesion.id !== 'admin') {
+            throw new Error('Acceso solo para el administrador.');
+        }
+        return sesion;
     }
 
     async obtenerSesionActual() {

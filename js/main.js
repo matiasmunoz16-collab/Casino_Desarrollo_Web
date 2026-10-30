@@ -26,6 +26,7 @@ document.addEventListener('alpine:init', () => {
 
     if (typeof AdminService !== 'undefined') {
         const adminService = new AdminService(usuarioRepo, apuestasRepo);
+        Alpine.data('accesoAdmin', () => crearAccesoAdmin(window.usuarioService));
         Alpine.data('adminMetricas', () => crearAdminMetricas(adminService));
         Alpine.data('adminMovimientos', () => crearAdminMovimientos(adminService));
         Alpine.data('adminUsuarios', () => crearAdminUsuarios(adminService));
