@@ -1,34 +1,44 @@
-class ApuestasRepository { 
-    async obtener() { throw new Error('No implementado'); } // metodo para obtener datos que obliga a ser implementado en las clases hijas
-    async guardar(jugada) { throw new Error('No implementado'); } // metodo para guardar que lanzara error si no lo sobreescribe
-    async eliminar(id) { throw new Error('No implementado'); } // base del metodo para eliminar una apuesta por su ID
-    async actualizarNota(id, nota) { throw new Error('No implementado'); } // metodo base para actualizar la nota de una jugada
-} 
 
-class LocalStorageApuestasRepository extends ApuestasRepository { // clase que hereda de la base para guardar en localStorage
-    async obtener() { // metodo para traer el historial de apuestas
-        const data = localStorage.getItem('historial_apuestas'); // busca y guarda en una variable lo que tiene almacenada en el navegador bajo esa clave
-        return data ? JSON.parse(data) : []; // si encuentra datos los transforma a un objeto js, si no, devuelve un arreglo vacío
+class ApuestasRepository {
+    async obtener() { throw new Error('No implementado'); } // devuelve todas las apuestas
+    async guardar(jugada) { throw new Error('No implementado'); } // guarda una apuesta y la devuelve con su id
+    async eliminar(id) { throw new Error('No implementado'); } // elimina la apuesta con ese id
+    async actualizarNota(id, nota) { throw new Error('No implementado'); } // cambia la nota de una apuesta
+}
+
+class LocalStorageApuestasRepository extends ApuestasRepository {
+    constructor() {
+        super(); // se usa antes de usar this en una clase hija
+        this.clave = 'historial_apuestas'; // guarda las apuestas en el navegador
     }
 
-    async guardar(jugada) { // metodo para registrar una nueva jugada
-        const historial = await this.obtener(); // trae todo el historial que ya tengo guardado usando el metodo anterior
-        historial.push(jugada); // agrega la nueva jugada al final de el arreglo del historial
-        localStorage.setItem('historial_apuestas', JSON.stringify(historial)); // convierte el historial actualizado a texto y lo guarda de vuelta en el navegador
+    async obtener() {
+        const datos = localStorage.getItem(this.clave); // lee el texto guardado
+        return datos ? JSON.parse(datos) : []; // convierte el texto enarreglo
     }
 
-    async eliminar(id) { // metodo para borrar una apuesta especifica usando su id
-        let historial = await this.obtener(); // recupera el historial actual completo
-        historial = historial.filter(j => j.id !== id); // filtra el arreglo para quedarse solo con las jugadas que no coincidan con el ID que quiere borrar
-        localStorage.setItem('historial_apuestas', JSON.stringify(historial)); // guarda este nuevo historial filtrado en el localStorage
-    } 
+    async guardar(jugada) {
+        const historial = await this.obtener(); // trae las apuestas que ya existen
+        const nueva = { ...jugada, id: Date.now() }; // copia la jugada y le da un id unico
+        historial.push(nueva); // la agrega al final
+        localStorage.setItem(this.clave, JSON.stringify(historial)); // guarda el arreglo actualizado como texto
+        return nueva; //devuelve la apuesta con su id
+    }
 
-    async actualizarNota(id, nota) { // metodo para cambiarle la nota a una apuesta que ya existe
-        let historial = await this.obtener(); // vuelve a cargar todo el historial
-        const index = historial.findIndex(j => j.id === id); // busca la posicion exacta en el arreglo donde esta la apuesta con ese ID
-        if (index !== -1) { // verifica si realmente encontra la apuesta
-            historial[index].nota = nota; // le asigna la nueva nota a la apuesta en esa posicion especifica
-            localStorage.setItem('historial_apuestas', JSON.stringify(historial)); // guarda los cambios actualizados en el localStorage
-        } 
-    } 
-} 
+    async eliminar(id) {
+        const historial = await this.obtener(); // trae las apuestas actuales
+        const restantes = historial.filter(j => String(j.id) !== String(id)); // deja todas menos el id indicado
+        localStorage.setItem(this.clave, JSON.stringify(restantes)); // guarda el resultado
+    }
+
+    async actualizarNota(id, nota) {
+        const historial = await this.obtener(); // trae las apuestas actuales
+        const indice = historial.findIndex(j => String(j.id) === String(id)); // busca la posicion de la apuesta
+        if (indice === -1) { // si no existe pone un error
+            throw new Error('No se encontró la apuesta.');
+        }
+        historial[indice].nota = nota; // cambia la nota
+        localStorage.setItem(this.clave, JSON.stringify(historial)); // guarda el cambio
+        return historial[indice]; // devuelve la apuesta actualizada
+    }
+}
