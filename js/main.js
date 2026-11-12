@@ -8,7 +8,6 @@ if ('serviceWorker' in navigator) {
 
 const apuestasRepo = new LocalStorageApuestasRepository();
 const apuestasService = new ApuestasService(apuestasRepo);
-window.apuestasController = new ApuestasController(apuestasService);
 
 const usuarioRepo = new LocalStorageUsuarioRepository();
 window.usuarioService = new UsuarioService(usuarioRepo);
@@ -17,6 +16,12 @@ window.usuarioRepositorio = usuarioRepo;
 window.apuestasRepositorio = apuestasRepo;
 
 document.addEventListener('alpine:init', () => {
+    if (typeof crearApuestasController !== 'undefined') { // solo en las paginas que cargan el controlador de apuestas
+        Alpine.data('historialApuestas', () =>
+            crearApuestasController(apuestasService, () => window.usuarioService.obtenerSesionActual())
+        );
+    }
+
     if (typeof LocalStorageJuegoRepository !== 'undefined') {
         const juegoRepo = new LocalStorageJuegoRepository();
         const juegoService = new JuegoService(juegoRepo);
