@@ -19,7 +19,9 @@ header {
     align-items: center;
     background-color: #0b3c5d;
     color: #ffffff;
-    padding: 30px 60px;
+    padding: 20px 15px;
+    flex-direction: column;
+    gap: 18px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -31,31 +33,37 @@ header {
 }
 
 #Palabra1 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: #ffffff;
 }
 
 #Palabra2 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: #00d2ff;
 }
 
 #logo {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
 }
 
 nav.Menu {
     display: flex;
     flex-direction: row;
-    gap: 40px;
-    font-size: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 20px;
+    font-size: 18px;
 }
 
 .barra {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 4px;
     text-decoration: none;
     color: #ffffff;
     font-weight: 600;
@@ -67,17 +75,35 @@ nav.Menu {
     cursor: pointer;
 }
 
+header > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+header > div:last-child a {
+    display: inline-flex;
+}
+
+header button {
+    min-height: 44px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 button[type="login"], button[type="Login"] {
-    min-width: 180px;
-    height: 55px;
+    min-width: 0px;
+    height: 46px;
     border: 2px solid #00d2ff;
     border-radius: 8px;
     background-color: #071e3d;
     color: #ffffff;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     padding: 0 20px;
-    margin-left: 15px;
+    margin-left: 0px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -92,7 +118,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 20px;
+    padding: 30px 15px;
 }
 
 .contenedor-creditos {
@@ -104,7 +130,7 @@ main {
     background-color: #071e3d;
     color: #ffffff;
     border-radius: 12px;
-    padding: 40px;
+    padding: 24px 18px;
     text-align: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid #1d5087;
@@ -142,7 +168,7 @@ main {
 }
 
 .MontoBono .Valor {
-    font-size: 32px;
+    font-size: 26px;
     font-weight: bold;
     color: #00e676;
 }
@@ -165,9 +191,14 @@ main {
     display: flex;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .BtnLogin, .BtnRegistro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 6px;
@@ -229,5 +260,47 @@ footer {
     padding: 25px;
     font-size: 14px;
     margin-top: auto;
+}
+
+@media (min-width: 769px) {
+    main {
+        padding: 50px 20px;
+    }
+    .CardCreditos {
+        padding: 40px;
+    }
+    .MontoBono .Valor {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 901px) {
+    header {
+        flex-direction: row;
+        gap: normal;
+        padding: 30px 60px;
+    }
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+    #Palabra1, #Palabra2 {
+        font-size: 32px;
+    }
+    nav.Menu {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 40px;
+        font-size: 24px;
+    }
+    header > div:last-child {
+        display: block;
+    }
+    button[type="login"], button[type="Login"] {
+        min-width: 180px;
+        height: 55px;
+        font-size: 18px;
+        margin-left: 15px;
+    }
 }
 

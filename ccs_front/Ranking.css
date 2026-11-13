@@ -216,4 +216,16 @@ footer {
         font-size: 18px;
         margin-left: 15px;
     }
+    .barra {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 4px;
+    }
+    header > div:last-child a {
+        display: inline-flex;
+    }
+    header button {
+        min-height: 44px;
+    }
 }
