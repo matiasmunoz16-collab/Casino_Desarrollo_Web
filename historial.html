@@ -50,36 +50,71 @@
         </div>
     </header>
 
-    <main>
+    <main x-data="historialApuestas">
         <section class="Resumen">
             <div class="Bien">
-                <h2>Historial de <span id="usuario-nombre" x-text="sesionActiva ? sesionActiva.nombre : 'Jugador'"></span></h2>
+                <h2>Historial de <span x-text="sesionActiva ? sesionActiva.nombre : 'Jugador'"></span></h2>
             </div>
 
             <div class="Total_Credito">
                 <h3>Total Apostado</h3>
-                <span class="money"> $: <span id="total-apostado">0</span></span>
+                <span class="money"> $: <span x-text="resumen.totalApostado"></span></span>
             </div>
 
             <div class="Mayor_Ganancia">
                 <h3>Balance Neto</h3>
-                <span class="money"> $: <span id="balance-neto">0</span></span>
+                <span class="money"> $: <span x-text="resumen.balanceNeto"></span></span>
             </div>
         </section>
 
-        <section class="SeccionTabla">
+        <section class="NuevaApuesta">
+            <h2>Nueva apuesta</h2>
+            <form @submit.prevent="apostar">
+                <label for="juego-apuesta">Juego:</label>
+                <select id="juego-apuesta" x-model="juegoActual">
+                    <option value="Ruleta">Ruleta</option>
+                    <option value="Blackjack">Blackjack</option>
+                </select>
+
+                <label for="monto-apuesta">Monto:</label>
+                <input type="number" id="monto-apuesta" x-model="montoApuesta" min="1" placeholder="Ej: 100">
+
+                <button type="submit" :disabled="enviando">Apostar</button>
+            </form>
+        </section>
+
+        <p role="alert" x-show="errorGeneral" x-cloak x-text="errorGeneral"></p>
+        <p class="mensaje-exito" x-show="mensajeExito" x-cloak x-text="mensajeExito"></p>
+        <p class="mensaje-estado" x-show="estado === 'cargando'" x-cloak>Cargando tu historial...</p>
+        <p class="mensaje-estado" x-show="estado === 'error'" x-cloak>No se pudo cargar el historial. Intenta recargar la página.</p>
+        <p class="mensaje-estado" x-show="estado === 'vacio'" x-cloak>Todavía no tienes apuestas registradas.</p>
+
+        <section class="SeccionTabla" x-show="estado === 'normal'" x-cloak>
             <table class="TablaHistorial">
                 <thead>
                     <tr>
                         <th>Fecha</th>
                         <th>Juego</th>
-                        <th>Tipo</th>
                         <th>Monto</th>
                         <th>Resultado</th>
+                        <th>Nota</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody id="historial-body">
-                    <!-- JavaScript inyectará las filas aquí -->
+                <tbody>
+                    <template x-for="jugada in historial" :key="jugada.id">
+                        <tr>
+                            <td x-text="formatearFecha(jugada.fecha)"></td>
+                            <td x-text="jugada.juego"></td>
+                            <td x-text="jugada.monto"></td>
+                            <td x-text="textoResultado(jugada.resultado)"></td>
+                            <td>
+                                <input type="text" x-model="jugada.nota" aria-label="Nota de la apuesta" placeholder="Agregar nota">
+                                <button type="button" @click="guardarNota(jugada)">Guardar</button>
+                            </td>
+                            <td><button type="button" @click="eliminar(jugada.id)">Eliminar</button></td>
+                        </tr>
+                    </template>
                 </tbody>
             </table>
         </section>

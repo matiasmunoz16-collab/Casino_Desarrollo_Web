@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+/* Oculta los elementos con x-cloak hasta que Alpine termina de cargar */
+[x-cloak] {
+    display: none !important;
+}
+
 body {
     font-family: system-ui, -apple-system, sans-serif;
     background-color: #dce7f2;
