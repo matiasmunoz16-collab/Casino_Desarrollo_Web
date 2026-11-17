@@ -1,3 +1,233 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #dce7f2;
+    color: #1a2b3c;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0b3c5d;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 15px;
+}
+
+#Delfin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+#Palabra1 {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 24px;
+}
+
+#Palabra2 {
+    font-weight: bold;
+    color: #00d2ff;
+    font-size: 24px;
+}
+
+#logo {
+    object-fit: contain;
+    width: 70px;
+    height: 70px;
+}
+
+nav.Menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+    font-size: 18px;
+}
+
+.barra {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.barra:hover {
+    color: #00d2ff;
+    cursor: pointer;
+}
+
+header > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+button[type="login"], button[type="Login"] {
+    border: 2px solid #00d2ff;
+    border-radius: 8px;
+    background-color: #071e3d;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0 20px;
+    min-width: 200px;
+    height: 46px;
+    font-size: 16px;
+    margin-left: 0;
+}
+
+button[type="login"]:hover, button[type="Login"]:hover {
+    background-color: #00d2ff;
+    color: #071e3d;
+}
+
+main {
+    flex: 1;
+}
+
+.Resumen {
+    background-color: #071e3d;
+    color: #ffffff;
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+    margin: 20px 15px;
+    padding: 20px;
+}
+
+.Bien {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.Total_Credito, .Mayor_Ganancia {
+    font-size: 18px;
+    text-align: center;
+}
+
+.money {
+    color: #00e676;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.SeccionTabla {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    margin: 20px 15px;
+    padding: 15px;
+}
+
+.TablaHistorial {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 16px;
+}
+
+.TablaHistorial th {
+    background-color: #0b3c5d;
+    color: #ffffff;
+    padding: 15px;
+    font-size: 18px;
+}
+
+.TablaHistorial td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.TablaHistorial tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.TablaHistorial tr:hover {
+    background-color: #e2e8f0;
+}
+
+footer {
+    background-color: #000000;
+    color: #a0aec0;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+@media (min-width: 769px) {
+    .Resumen {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        text-align: left;
+        margin: 30px 50px;
+        padding: 25px 30px;
+    }
+    .Bien { 
+        font-size: 24px; 
+    }
+    .SeccionTabla {
+        margin: 30px 50px;
+        padding: 25px;
+    }
+}
+
+@media (min-width: 901px) {
+    header {
+        flex-direction: row;
+        padding: 30px 60px;
+        gap: normal;
+    }
+    #logo { 
+        width: 100px; 
+        height: 100px; 
+    }
+    #Palabra1, #Palabra2 { 
+        font-size: 32px; 
+    }
+    nav.Menu {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 40px;
+        font-size: 24px;
+    }
+    header > div:last-child {
+        display: block;
+    }
+    button[type="login"], button[type="Login"] {
+        min-width: 180px;
+        height: 55px;
+        font-size: 18px;
+        margin-left: 15px;
+    }
+}
+
 .NuevaApuesta {
     background-color: #ffffff;
     border-radius: 12px;
