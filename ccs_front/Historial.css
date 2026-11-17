@@ -4,7 +4,6 @@
     padding: 0;
 }
 
-/* Oculta los elementos con x-cloak hasta que Alpine termina de cargar */
 [x-cloak] {
     display: none !important;
 }
@@ -226,5 +225,119 @@ footer {
         height: 55px;
         font-size: 18px;
         margin-left: 15px;
+    }
+}
+
+.NuevaApuesta {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px 15px;
+    padding: 20px;
+}
+
+.NuevaApuesta h2 {
+    color: #0b3c5d;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.NuevaApuesta form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.NuevaApuesta select,
+.NuevaApuesta input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #9fb3c8;
+    border-radius: 8px;
+}
+
+.NuevaApuesta button[type="submit"] {
+    min-height: 44px;
+    background-color: #0b3c5d;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.NuevaApuesta button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Mensajes de error, éxito y estados */
+main > p {
+    margin: 10px 15px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+main > p[role="alert"] {
+    background-color: #fdecea;
+    color: #b00020;
+}
+
+.mensaje-exito {
+    background-color: #e6f4ea;
+    color: #0b6e3a;
+    font-weight: bold;
+}
+
+.mensaje-estado {
+    background-color: #ffffff;
+    color: #3d5468;
+}
+
+.TablaHistorial td input[type="text"] {
+    width: 100%;
+    max-width: 180px;
+    padding: 6px 8px;
+    font-size: 14px;
+    border: 1px solid #9fb3c8;
+    border-radius: 6px;
+}
+
+.TablaHistorial td button {
+    margin-top: 6px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #0b3c5d;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.TablaHistorial td:last-child button {
+    background-color: #c62828;
+}
+
+@media (min-width: 769px) {
+    .NuevaApuesta {
+        margin: 30px 50px;
+        padding: 25px 30px;
+    }
+
+    .NuevaApuesta form {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    main > p {
+        margin: 10px 50px;
+    }
+
+    .TablaHistorial td button {
+        margin-top: 0;
+        margin-left: 6px;
     }
 }
